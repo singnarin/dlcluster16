@@ -12,5 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('site.index');
 });
+
+Route::get('general', 'schoolController@index');
