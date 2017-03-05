@@ -6,13 +6,13 @@
   {!! Html::script('js/jquery.min.js') !!}
   {!! Html::script('bootstrap/js/bootstrap.min.js') !!}
   <style type="text/css">
-  	@import url("webfonts/thsarabunnew_bold/stylesheet.css");
-  	@import url("webfonts/thaisansneue/stylesheet.css");
+  	@import url("../webfonts/thsarabunnew_bold/stylesheet.css");
+  	@import url("../webfonts/thaisansneue/stylesheet.css");
   	body,td,th {
   		font-family: 'thsarabunnew bold';
   	}
   	body{
-  	background: url('images/internet_bg06.jpg') no-repeat center center fixed;
+  	background: url('../images/internet_bg06.jpg') no-repeat center center fixed;
   	  -webkit-background-size: cover;
   	  -moz-background-size: cover;
   	  -o-background-size: cover;
@@ -78,12 +78,12 @@
   </style>
 </head>
   <body>
+    <div class="container"
   	<br>
-  	<div class="container">
-  		<table align="center" width="100%">
+      <table align="center" width="100%">
   			<tr>
   				<td width="10%" align="right" valign="top">
-  					<a href="index.php"><img src="images/logo.png" width="80" border="0" alt="หน้าแรก"></a>
+  					<a href="index.php"><img src="../images/logo.png" width="80" border="0" alt="หน้าแรก"></a>
   				</td>
   				<td width="3%"></td>
   				<td width="87%">
@@ -103,15 +103,13 @@
         </div>
       </div>
     </div>
-
-  	</div>
+</div>
 
   	<div class="mastfoot">
   		    <div class="inner" align="center">
   		      <p class="foot">©:เขตตรวจราชการ 16 จังหวัดเชียงราย พะเยา แพร่ น่าน</p>
   		    </div>
-      	</div>
-  	</div>
+    </div>
 
 </body>
 </html>

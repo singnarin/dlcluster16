@@ -8,7 +8,7 @@ use App\Http\Requests;
 use App\Schools;
 use Session;
 
-class SchoolController extends Controller
+class primarySchoolController extends Controller
 {
   public function index(){
     $user = Session::get('user');
@@ -16,13 +16,10 @@ class SchoolController extends Controller
       return View('site.loginForm');
     }else{
       $id = $user[0]->id ;
-      $school = Schools::find($id);
-      if(empty($school)){
-        return Redirect('generalForm');
-      }else{
-        return View('school.index')
+      $school = Schools::where('head_school_id', '=', $id)
+      ->paginate(100);
+      return View('primaryschool.select')
           ->with('school', $school);
-        }
     }
   }
 
@@ -42,11 +39,10 @@ class SchoolController extends Controller
         $school->tel = $request->get('tel');
         $school->email = $request->get('email');
         if($school->save()){
-          return Redirect('general');
+          return Redirect('primarygeneral');
         }
       }
       return View('school.form')
         ->with('school', $school);
     }
-
 }
