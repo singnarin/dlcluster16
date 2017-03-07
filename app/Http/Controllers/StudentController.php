@@ -66,7 +66,8 @@ class StudentController extends Controller
         $student->fm4 = $request->get('fm4');
         $student->fm5 = $request->get('fm5');
         $student->fm6 = $request->get('fm6');
-        if($student->save()){
+        $school->teacherstatus = $request->get('teacherstatus');
+        if($student->save() && $school->save()){
           return Redirect('student');
         }
       }
@@ -74,4 +75,146 @@ class StudentController extends Controller
         ->with('student', $student)
         ->with('school', $school);
     }
+
+    //primarystudent
+    public function primarystudent(){
+      $user = Session::get('user');
+      if(empty($user)){
+        return View('site.loginForm');
+      }else{
+        $id = $user[0]->id ;
+        $school = Students::where('head_school_id', '=', $id)
+        ->selectRaw('sum(mo1) as summo1,
+                    sum(fo1) as sumfo1,
+                    sum(mo2) as summo2,
+                    sum(fo2) as sumfo2,
+                    sum(mp1) as summp1,
+                    sum(fp1) as sumfp1,
+                    sum(mp2) as summp2,
+                    sum(fp2) as sumfp2,
+                    sum(mp3) as summp3,
+                    sum(fp3) as sumfp3,
+                    sum(mp4) as summp4,
+                    sum(fp4) as sumfp4,
+                    sum(mp5) as summp5,
+                    sum(fp5) as sumfp5,
+                    sum(mp6) as summp6,
+                    sum(fp6) as sumfp6,
+                    sum(mm1) as summm1,
+                    sum(fm1) as sumfm1,
+                    sum(mm2) as summm2,
+                    sum(fm2) as sumfm2,
+                    sum(mm3) as summm3,
+                    sum(fm3) as sumfm3,
+                    sum(mm4) as summm4,
+                    sum(fm4) as sumfm4,
+                    sum(mm5) as summm5,
+                    sum(fm5) as sumfm5,
+                    sum(mm6) as summm6,
+                    sum(fm6) as sumfm6
+                    ')
+        ->get();
+          return View('student.primarystudent')
+            ->with('school', $school);
+      }
+    }
+
+    //clusterstudent
+    public function clusterstudent(){
+      $user = Session::get('user');
+      if(empty($user)){
+        return View('site.loginForm');
+      }else{
+        $id = $user[0]->id ;
+        $school = Students::where('head_school_id', '<>', $id)
+        ->selectRaw('sum(mo1) as summo1,
+                    sum(fo1) as sumfo1,
+                    sum(mo2) as summo2,
+                    sum(fo2) as sumfo2,
+                    sum(mp1) as summp1,
+                    sum(fp1) as sumfp1,
+                    sum(mp2) as summp2,
+                    sum(fp2) as sumfp2,
+                    sum(mp3) as summp3,
+                    sum(fp3) as sumfp3,
+                    sum(mp4) as summp4,
+                    sum(fp4) as sumfp4,
+                    sum(mp5) as summp5,
+                    sum(fp5) as sumfp5,
+                    sum(mp6) as summp6,
+                    sum(fp6) as sumfp6,
+                    sum(mm1) as summm1,
+                    sum(fm1) as sumfm1,
+                    sum(mm2) as summm2,
+                    sum(fm2) as sumfm2,
+                    sum(mm3) as summm3,
+                    sum(fm3) as sumfm3,
+                    sum(mm4) as summm4,
+                    sum(fm4) as sumfm4,
+                    sum(mm5) as summm5,
+                    sum(fm5) as sumfm5,
+                    sum(mm6) as summm6,
+                    sum(fm6) as sumfm6
+                    ')
+        ->get();
+          return View('student.primarystudent')
+            ->with('school', $school);
+      }
+    }
+
+    //clusterprimarystudent
+    public function clusterprimarystudent(){
+      $user = Session::get('user');
+      if(empty($user)){
+        return View('site.loginForm');
+      }else{
+        $id = $user[0]->id ;
+        $school = Schools::where('head_school_id', '=', $id)
+        ->paginate(100);
+        return View('student.clusterselect')
+            ->with('school', $school);
+      }
+    }
+
+    public function clusterprimarystudents(Request $request, $id = null){
+      $user = Session::get('user');
+      if(empty($user)){
+        return View('site.loginForm');
+      }else{
+        $school = Students::where('head_school_id', '=', $id)
+        ->selectRaw('sum(mo1) as summo1,
+                    sum(fo1) as sumfo1,
+                    sum(mo2) as summo2,
+                    sum(fo2) as sumfo2,
+                    sum(mp1) as summp1,
+                    sum(fp1) as sumfp1,
+                    sum(mp2) as summp2,
+                    sum(fp2) as sumfp2,
+                    sum(mp3) as summp3,
+                    sum(fp3) as sumfp3,
+                    sum(mp4) as summp4,
+                    sum(fp4) as sumfp4,
+                    sum(mp5) as summp5,
+                    sum(fp5) as sumfp5,
+                    sum(mp6) as summp6,
+                    sum(fp6) as sumfp6,
+                    sum(mm1) as summm1,
+                    sum(fm1) as sumfm1,
+                    sum(mm2) as summm2,
+                    sum(fm2) as sumfm2,
+                    sum(mm3) as summm3,
+                    sum(fm3) as sumfm3,
+                    sum(mm4) as summm4,
+                    sum(fm4) as sumfm4,
+                    sum(mm5) as summm5,
+                    sum(fm5) as sumfm5,
+                    sum(mm6) as summm6,
+                    sum(fm6) as sumfm6
+                    ')
+        ->get();
+          return View('student.primarystudent')
+            ->with('school', $school);
+      }
+    }
+
 }

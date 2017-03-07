@@ -1,3 +1,4 @@
+<?php $user = Session::get('user');?>
 @extends('layouts.master')
 @section('content')
 <center><h4>ข้อมูลพื้นฐาน</h4></center>
@@ -50,7 +51,11 @@
 
 <div class="form-action" align="center">
   {!! Form::submit('บันทึกข้อมูล', array('class'=>'btn btn-success')) !!}
+  @if(@$user[0]->permission == 0)
   {!! Html::link('general', 'ยกเลิก', array('class'=>'btn btn-primary')) !!}
+  @else
+  {!! Html::link('schoolgeneral', 'ยกเลิก', array('class'=>'btn btn-primary')) !!}
+  @endif
   <br /><br /><br />
 </div>
 {!! Form::close( ) !!}

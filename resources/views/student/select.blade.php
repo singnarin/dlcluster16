@@ -17,13 +17,13 @@
       @foreach($school as $value)
         <tr>
           <td>
-            {!! Html::link('schoolteacherForm/'.$value->id, $value->id) !!}
+            {!! Html::link('schoolstudentForm/'.$value->id, $value->id) !!}
           </td>
           <td>
-            {!! Html::link('schoolteacherForm/'.$value->id, $value->schoolName) !!}
+            {!! Html::link('schoolstudentForm/'.$value->id, $value->schoolName) !!}
           </td>
           <td>
-            @if($value->teacherstatus == 1)
+            @if($value->studentstatus == 1)
               {{"บันทึกข้อมูลแล้ว"}}
             @else
               {{"ยังไม่ได้บันทึกข้อมูล"}}

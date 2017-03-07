@@ -20,7 +20,7 @@
         </div>
         <div class="form-group">
           {!! Form::label('password', 'รหัสผ่าน', array('class' => 'control-label')) !!}
-          {!! Form::text('password','',array('class' => 'form-control')) !!}
+          {!! Form::password('password',array('class' => 'form-control')) !!}
         </div>
         <div class="control-actions">
           {!! Form::submit('ตกลง', array('class' => 'btn btn-lg btn-primary btn-block')) !!}

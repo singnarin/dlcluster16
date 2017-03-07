@@ -17,21 +17,28 @@ class schoolTeacherController extends Controller
       return View('site.loginForm');
     }else{
       $id = $user[0]->id ;
-      $school = Schools::where('schools.head_school_id', '=', $id)
-      ->leftJoin('teachers', 'schools.id', '=', 'teachers.id')
-      ->where('teachers.id')
+      $school_ok = Schools::where('teacherstatus', '=', 1)
+      ->where('head_school_id', '=', $id)
+      ->count();
+      $school_not = Schools::where('teacherstatus', '=', 0)
+      ->where('head_school_id', '=', $id)
+      ->count();
+      $school = Schools::where('head_school_id', '=', $id)
       ->paginate(100);
-      //return View('teacher.select')
-      //    ->with('school', $school);
-      return $school;
+      return View('teacher.select')
+          ->with('school', $school)
+          ->with('school_ok', $school_ok)
+          ->with('school_not', $school_not);
     }
   }
   public function form(Request $request, $id = null){
-      if(empty($id)){
-        $teacher = new Teachers;
-      }else{
+
+
+
         $teacher = Teachers::find($id);
         $school = Schools::find($id);
+      if ($school->teacherstatus == '0'){
+        $teacher = new Teachers;
       }
 
       if($request->all()){
@@ -53,8 +60,9 @@ class schoolTeacherController extends Controller
         $teacher->primaryteacher = $request->get('primaryteacher');
         $teacher->juniorhighschool = $request->get('juniorhighschool');
         $teacher->highschoolteacher = $request->get('highschoolteacher');
-        if($teacher->save()){
-          return Redirect('schoolteacher');
+        $school->teacherstatus = $request->get('teacherstatus');
+        if($teacher->save() && $school->save()){
+          return Redirect()->back();
         }
       }
       return View('teacher.form')

@@ -80,7 +80,7 @@
 </tr>
 <tr>
   <td colspan="2" align="center">
-    {!! Html::link('../teacherForm/'.$school->id, 'แก้ไขข้อมูล', array('class'=>'btn btn-primary')) !!}
+    {!! Html::link('#', 'Print', array('class'=>'btn btn-primary')) !!}
   </td>
 </tr>
 </table>

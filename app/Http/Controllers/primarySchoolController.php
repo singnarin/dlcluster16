@@ -23,6 +23,35 @@ class primarySchoolController extends Controller
     }
   }
 
+  public function schoolgeneral(){
+    $user = Session::get('user');
+    if(empty($user)){
+      return View('site.loginForm');
+    }else{
+      $id = $user[0]->id ;
+      $school = Schools::paginate(15);
+      return View('primaryschool.clusterselect')
+          ->with('school', $school);
+    }
+  }
+
+  public function schoolgeneralsearch(Request $request, $id = null){
+    $user = Session::get('user');
+    if(empty($user)){
+      return View('site.loginForm');
+    }else{
+      $id = $request->get('id');
+      if(empty($id)){
+        $school = Schools::paginate(15);
+      }else{
+      $school = Schools::where('id', '=', $id)
+        ->paginate(15);
+      }
+      return View('primaryschool.clusterselect')
+          ->with('school', $school);
+    }
+  }
+
   public function form(Request $request, $id = null){
       if(empty($id)){
         $school = new Schools;
@@ -39,7 +68,7 @@ class primarySchoolController extends Controller
         $school->tel = $request->get('tel');
         $school->email = $request->get('email');
         if($school->save()){
-          return Redirect('primarygeneral');
+          return Redirect()->back();
         }
       }
       return View('school.form')

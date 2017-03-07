@@ -3,8 +3,13 @@
 @section('content')
 <center><h4>ข้อมูลจำนวนนักเรียน</h4></center>
 {!! Form::model($student, array('class'=>'form-horizontal')) !!}
+@if(@$user[0]->permission == 0)
 {!! Form::hidden('id',$user[0]->id ) !!}
+@else
+{!! Form::hidden('id',$school->id ) !!}
+@endif
 {!! Form::hidden('head_school_id',$school->head_school_id ) !!}
+{!! Form::hidden('studentstatus',"1" ) !!}
 <table class="table table-bordered">
 <thead>
     <th><div align="center">ระดับชั้น</div></th>
@@ -196,9 +201,13 @@
 </table>
 <div class="form-action" align="center">
   {!! Form::submit('บันทึกข้อมูล', array('class'=>'btn btn-success')) !!}
+  @if(@$user[0]->permission == 0)
   {!! Html::link('student', 'ยกเลิก', array('class'=>'btn btn-primary')) !!}
+  @else
+  {!! Html::link('schoolteacher', 'ยกเลิก', array('class'=>'btn btn-primary')) !!}
+  @endif
   <br /><br /><br />
 </div>
-{!! Form::close( ) !!}
+{!! Form::close() !!}
 
 @stop

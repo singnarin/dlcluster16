@@ -9,6 +9,7 @@
 {!! Form::hidden('id',$school->id ) !!}
 @endif
 {!! Form::hidden('head_school_id',$school->head_school_id ) !!}
+{!! Form::hidden('teacherstatus',"1" ) !!}
 <table class="table table-bordered table-general">
   <tr>
       <th><div align="center">ประเภทบุคลากร</div></th>
@@ -127,8 +128,6 @@
   {!! Form::submit('บันทึกข้อมูล', array('class'=>'btn btn-success')) !!}
   @if(@$user[0]->permission == 0)
   {!! Html::link('teacher', 'ยกเลิก', array('class'=>'btn btn-primary')) !!}
-  @else
-  {!! Html::link('schoolteacher', 'ยกเลิก', array('class'=>'btn btn-primary')) !!}
   @endif
   <br /><br /><br />
 </div>
