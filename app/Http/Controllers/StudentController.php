@@ -217,4 +217,106 @@ class StudentController extends Controller
       }
     }
 
+    public function studentsearch(){
+      $user = Session::get('user');
+      if(empty($user)){
+        return View('site.loginForm');
+      }else{
+        $id = $user[0]->id ;
+        $school_ok = Schools::where('studentstatus', '=', 1)
+          ->where('permission', '<>', '1')
+          ->where('permission', '<>', '2')
+          ->count();
+        $school_not = Schools::where('studentstatus', '=', 0)
+          ->where('permission', '<>', '1')
+          ->where('permission', '<>', '2')
+          ->count();
+        $school = Schools::where('permission', '<>', '1')
+          ->where('permission', '<>', '2')
+          ->paginate(15);
+        return View('student.clusterselectschool')
+            ->with('school', $school)
+            ->with('school_ok', $school_ok)
+            ->with('school_not', $school_not);
+      }
+    }
+
+    public function schoolteachersearch(Request $request, $id = null){
+      $user = Session::get('user');
+      if(empty($user)){
+        return View('site.loginForm');
+      }else{
+        $id = $request->get('id');
+        if(empty($id)){
+          $school_ok = Schools::where('studentstatus', '=', 1)
+            ->where('permission', '<>', '1')
+            ->where('permission', '<>', '2')
+            ->count();
+          $school_not = Schools::where('studentstatus', '=', 0)
+            ->where('permission', '<>', '1')
+            ->where('permission', '<>', '2')
+            ->count();
+          $school = Schools::where('permission', '<>', '1')
+            ->where('permission', '<>', '2')
+            ->paginate(15);
+        }else{
+          $school_ok = Schools::where('id', '=', $id)
+            ->where('studentstatus', '=', 1)
+            ->where('permission', '<>', '1')
+            ->where('permission', '<>', '2')
+            ->count();
+          $school_not = Schools::where('id', '=', $id)
+            ->where('studentstatus', '=', 0)
+            ->where('permission', '<>', '1')
+            ->where('permission', '<>', '2')
+            ->count();
+          $school = Schools::where('id', '=', $id)
+            ->paginate(15);
+        }
+        return View('student.clusterselectschool')
+            ->with('school', $school)
+            ->with('school_ok', $school_ok)
+            ->with('school_not', $school_not);
+      }
+    }
+
+    public function schoolteachersearchp(Request $request, $id = null){
+      $user = Session::get('user');
+      if(empty($user)){
+        return View('site.loginForm');
+      }else{
+        $id = $request->get('id');
+        if(empty($id)){
+          $school_ok = Schools::where('studentstatus', '=', 1)
+            ->where('permission', '<>', '1')
+            ->where('permission', '<>', '2')
+            ->count();
+          $school_not = Schools::where('studentstatus', '=', 0)
+            ->where('permission', '<>', '1')
+            ->where('permission', '<>', '2')
+            ->count();
+          $school = Schools::where('permission', '<>', '1')
+            ->where('permission', '<>', '2')
+            ->paginate(15);
+        }else{
+          $school_ok = Schools::where('head_school_id', '=', $id)
+            ->where('studentstatus', '=', 1)
+            ->where('permission', '<>', '1')
+            ->where('permission', '<>', '2')
+            ->count();
+          $school_not = Schools::where('head_school_id', '=', $id)
+            ->where('studentstatus', '=', 0)
+            ->where('permission', '<>', '1')
+            ->where('permission', '<>', '2')
+            ->count();
+          $school = Schools::where('head_school_id', '=', $id)
+            ->paginate(15);
+        }
+        return View('student.clusterselectschool')
+            ->with('school', $school)
+            ->with('school_ok', $school_ok)
+            ->with('school_not', $school_not);
+      }
+    }
+
 }

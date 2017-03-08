@@ -26,8 +26,9 @@ SET time_zone = "+00:00";
 -- Table structure for table `dlit`
 --
 
-CREATE TABLE `dlit` (
-  `schoolid` varchar(10) NOT NULL,
+CREATE TABLE `dlits` (
+  `id` varchar(10) NOT NULL,
+  `head_school_id` varchar(10) NOT NULL,
   `dlitP1` varchar(100) NOT NULL,
   `dlitP2` varchar(100) NOT NULL,
   `dlitP3` varchar(100) NOT NULL,
@@ -62,8 +63,9 @@ CREATE TABLE `dlit` (
 -- Table structure for table `dltv`
 --
 
-CREATE TABLE `dltv` (
+CREATE TABLE `dltvs` (
   `schoolid` varchar(10) NOT NULL,
+  `head_school_id` varchar(10) NOT NULL,
   `dltvLevel` varchar(50) NOT NULL,
   `dltvLevelOther` varchar(100) NOT NULL,
   `dltvSatelliteNum` int(11) NOT NULL,

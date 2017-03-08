@@ -74,7 +74,8 @@ class schoolStudentController extends Controller
         $student->fm6 = $request->get('fm6');
         $school->studentstatus = $request->get('studentstatus');
         if($student->save() && $school->save()){
-          return Redirect('schoolstudent');
+          $request->session()->flash('alert-success', 'บันทึกข้อมูลเรียบร้อย');
+          return Redirect()->back();
         }
       }
       return View('student.form')

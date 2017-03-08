@@ -15,7 +15,7 @@
             <li>{!! Html::link('student', 'ข้อมูลนักเรียน') !!}</li>
           </ul>
       </li>
-      <li><a href="#"><span class="glyphicon glyphicon-facetime-video"></span> DLTV</a></li>
+      <li><a href="../dltv"><span class="glyphicon glyphicon-facetime-video"></span> DLTV</a></li>
       <li><a href="#"><span class="glyphicon glyphicon-cloud"></span> DLIT</a></li>
       <li><a href="#"><span class="glyphicon glyphicon-warning-sign"></span> ข้อมูลไฟฟ้า</a></li>
     </ul>
@@ -25,7 +25,7 @@
       <li><a href="#"><span class="glyphicon glyphicon-user "></span>
             {{$user[0]->schoolName}}
       </a></li>
-      <li><a href="logout"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
+      <li><a href="../logout"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
       @endif
     </ul>
   </div>
@@ -64,7 +64,7 @@
             {{$user[0]->id}}
           @endif
       </a></li>
-      <li><a href="logout"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
+      <li><a href="../logout"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
     </ul>
   </div>
 </nav>
@@ -91,7 +91,7 @@
             <li role="separator" class="divider"></li>
             <li>{!! Html::link('clusterstudent', 'ข้อมูลนักเรียนระดับเขตตรวจราชการ') !!}</li>
             <li>{!! Html::link('clusterprimarystudent', 'ข้อมูลนักเรียนระดับเขตพื้นที่') !!}</li>
-            <li>{!! Html::link('schoolstudent', 'ข้อมูลนักเรียนระดับโรงเรียน') !!}</li>
+            <li>{!! Html::link('studentsearch', 'ข้อมูลนักเรียนระดับโรงเรียน') !!}</li>
           </ul>
       </li>
       <li><a href="#"><span class="glyphicon glyphicon-facetime-video"></span> DLTV</a></li>
@@ -105,7 +105,7 @@
             {{$user[0]->schoolName}}
           @endif
       </a></li>
-      <li><a href="logout"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
+      <li><a href="../logout"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
     </ul>
   </div>
 </nav>

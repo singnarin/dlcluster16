@@ -10,6 +10,14 @@
 @endif
 {!! Form::hidden('head_school_id',$school->head_school_id ) !!}
 {!! Form::hidden('studentstatus',"1" ) !!}
+<div class="flash-message">
+    @foreach (['danger', 'warning', 'success', 'info'] as $msg)
+      @if(Session::has('alert-' . $msg))
+      <p class="alert alert-{{ $msg }}" align='center'>{{ Session::get('alert-' . $msg) }} <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a></p>
+      @endif
+    @endforeach
+  </div> <!-- end .flash-message -->
+
 <table class="table table-bordered">
 <thead>
     <th><div align="center">ระดับชั้น</div></th>

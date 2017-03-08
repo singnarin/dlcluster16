@@ -135,10 +135,16 @@ public function clusterteacher(){
 
   public function form(Request $request, $id = null){
       if(empty($id)){
+        $user = Session::get('user');
+        $school = $user[0]->id ;
+        $id = Schools::find($school);
+        $head_school_id = $id->head_school_id;
         $teacher = new Teachers;
       }else{
         $teacher = Teachers::find($id);
-        $school = Schools::find($id);
+        $id = Schools::find($id);
+        $school = $id->id;
+        $head_school_id = $id->head_school_id;
       }
 
       if($request->all()){
@@ -167,8 +173,10 @@ public function clusterteacher(){
       }
       return View('teacher.form')
         ->with('teacher', $teacher)
-        ->with('school', $school);
+        ->with('school', $school)
+        ->with('head_school_id', $head_school_id);
     }
+
     public function teachersearch(){
       $user = Session::get('user');
       if(empty($user)){

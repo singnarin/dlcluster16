@@ -3,13 +3,16 @@
 @section('content')
 <center><h4>ข้อมูลจำนวนครูและบุคลากร</h4></center>
 {!! Form::model($teacher, array('class'=>'form-horizontal')) !!}
-@if(@$user[0]->permission == 0)
-{!! Form::hidden('id',$user[0]->id ) !!}
-@else
-{!! Form::hidden('id',$school->id ) !!}
-@endif
-{!! Form::hidden('head_school_id',$school->head_school_id ) !!}
-{!! Form::hidden('teacherstatus',"1" ) !!}
+{!! Form::hidden('id',$school ) !!}
+{!! Form::hidden('head_school_id',$head_school_id ) !!}
+{!! Form::hidden('teacherstatus',1 ) !!}
+<div class="flash-message">
+    @foreach (['danger', 'warning', 'success', 'info'] as $msg)
+      @if(Session::has('alert-' . $msg))
+      <p class="alert alert-{{ $msg }}" align='center'>{{ Session::get('alert-' . $msg) }} <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a></p>
+      @endif
+    @endforeach
+  </div> <!-- end .flash-message -->
 <table class="table table-bordered table-general">
   <tr>
       <th><div align="center">ประเภทบุคลากร</div></th>

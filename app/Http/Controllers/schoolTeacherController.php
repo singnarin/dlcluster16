@@ -62,6 +62,7 @@ class schoolTeacherController extends Controller
         $teacher->highschoolteacher = $request->get('highschoolteacher');
         $school->teacherstatus = $request->get('teacherstatus');
         if($teacher->save() && $school->save()){
+          $request->session()->flash('alert-success', 'บันทึกข้อมูลเรียบร้อย');
           return Redirect()->back();
         }
       }
