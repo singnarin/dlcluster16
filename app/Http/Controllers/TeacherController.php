@@ -135,21 +135,14 @@ public function clusterteacher(){
 
   public function form(Request $request, $id = null){
       if(empty($id)){
-        $user = Session::get('user');
-        $school = $user[0]->id ;
-        $id = Schools::find($school);
-        $head_school_id = $id->head_school_id;
         $teacher = new Teachers;
       }else{
         $teacher = Teachers::find($id);
-        $id = Schools::find($id);
-        $school = $id->id;
-        $head_school_id = $id->head_school_id;
       }
 
       if($request->all()){
         $teacher->id = $request->get('id');
-        $teacher->head_school_id = $request->get('head_school_id');
+        $teacher->head_school_id = $teacher->School->head_school_id;
         $teacher->mDirector = $request->get('mDirector');
         $teacher->mDeputy = $request->get('mDeputy');
         $teacher->mRegular = $request->get('mRegular');
@@ -166,15 +159,17 @@ public function clusterteacher(){
         $teacher->primaryteacher = $request->get('primaryteacher');
         $teacher->juniorhighschool = $request->get('juniorhighschool');
         $teacher->highschoolteacher = $request->get('highschoolteacher');
-        $school->teacherstatus = $request->get('teacherstatus');
-        if($teacher->save() && $school->save()){
-          return Redirect('teacher');
-        }
+        if($teacher->save()){
+          $school = schools::find($request->get('id'));
+          $school->teacherstatus = '1';
+          if($school->save()){
+            //return $school->teacherstatus;
+            return Redirect('teacher');
+            }
+          }
       }
       return View('teacher.form')
-        ->with('teacher', $teacher)
-        ->with('school', $school)
-        ->with('head_school_id', $head_school_id);
+        ->with('teacher', $teacher);
     }
 
     public function teachersearch(){

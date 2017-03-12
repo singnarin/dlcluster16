@@ -32,18 +32,17 @@ class schoolTeacherController extends Controller
     }
   }
   public function form(Request $request, $id = null){
+      $school = Schools::find($id);
 
-
-
-        $teacher = Teachers::find($id);
-        $school = Schools::find($id);
       if ($school->teacherstatus == '0'){
         $teacher = new Teachers;
+      }else{
+        $teacher = Teachers::find($id);
       }
 
       if($request->all()){
         $teacher->id = $request->get('id');
-        $teacher->head_school_id = $request->get('head_school_id');
+        $teacher->head_school_id = $school->head_school_id;
         $teacher->mDirector = $request->get('mDirector');
         $teacher->mDeputy = $request->get('mDeputy');
         $teacher->mRegular = $request->get('mRegular');
@@ -60,15 +59,19 @@ class schoolTeacherController extends Controller
         $teacher->primaryteacher = $request->get('primaryteacher');
         $teacher->juniorhighschool = $request->get('juniorhighschool');
         $teacher->highschoolteacher = $request->get('highschoolteacher');
-        $school->teacherstatus = $request->get('teacherstatus');
-        if($teacher->save() && $school->save()){
-          $request->session()->flash('alert-success', 'บันทึกข้อมูลเรียบร้อย');
-          return Redirect()->back();
-        }
+        if($teacher->save()){
+          $school->teacherstatus = '1';
+            if($school->save()){
+                $request->session()->flash('alert-success', 'บันทึกข้อมูลเรียบร้อย');
+                return Redirect()->back();
+              }
+            }
       }
       return View('teacher.form')
         ->with('teacher', $teacher)
-        ->with('school', $school);
+        ->with('id', $id);
+        //return $school->teacherstatus;
     }
+
 
 }

@@ -32,18 +32,17 @@ class schoolStudentController extends Controller
     }
   }
   public function form(Request $request, $id = null){
-
-
-
-        $student = Students::find($id);
         $school = Schools::find($id);
+
       if ($school->studentstatus == '0'){
         $student = new Students;
+      }else{
+        $student = Students::find($id);
       }
 
       if($request->all()){
         $student->id = $request->get('id');
-        $student->head_school_id = $request->get('head_school_id');
+        $student->head_school_id = $school->head_school_id;
         $student->mo1 = $request->get('mo1');
         $student->mo2 = $request->get('mo2');
         $student->fo1 = $request->get('fo1');
@@ -72,14 +71,16 @@ class schoolStudentController extends Controller
         $student->fm4 = $request->get('fm4');
         $student->fm5 = $request->get('fm5');
         $student->fm6 = $request->get('fm6');
-        $school->studentstatus = $request->get('studentstatus');
-        if($student->save() && $school->save()){
-          $request->session()->flash('alert-success', 'บันทึกข้อมูลเรียบร้อย');
-          return Redirect()->back();
+        if($student->save()){
+          $school->studentstatus = '1';
+            if($school->save()){
+                $request->session()->flash('alert-success', 'บันทึกข้อมูลเรียบร้อย');
+                return Redirect()->back();
+              }
         }
       }
       return View('student.form')
         ->with('student', $student)
-        ->with('school', $school);
+        ->with('id', $id);
     }
 }

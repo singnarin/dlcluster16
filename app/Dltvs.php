@@ -9,6 +9,6 @@ class Dltvs extends Model
 {
   public $timestamps = false;
   public function School(){
-    return $this->belongsTo('App\Schools');
+    return $this->hasOne('App\Schools');
   }
 }

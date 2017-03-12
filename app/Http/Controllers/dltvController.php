@@ -32,12 +32,11 @@ class dltvController extends Controller
         $dltv = new Dltvs;
       }else{
         $dltv = Dltvs::find($id);
-        $school = Schools::find($id);
       }
 
       if($request->all()){
         $dltv->id = $request->get('id');
-        $dltv->head_school_id = $request->get('head_school_id');
+        $dltv->head_school_id = $student->School->head_school_id;
         $dltv->dltvLevel = $request->get('dltvLevel');
         $dltv->dltvLevelOther = $request->get('dltvLevelOther');
         $dltv->dltvSatelliteNum = $request->get('dltvSatelliteNum');
@@ -58,13 +57,16 @@ class dltvController extends Controller
         $dltv->saveUser = $request->get('saveUser');
         $dltv->directerUser = $request->get('directerUser');
         $dltv->telDirecter = $request->get('telDirecter');
-        $school->dltvstatus = $request->get('dltvstatus');
-        if($dltv->save() && $school->save()){
-          return Redirect('teacher');
+        if($dltv->save()){
+          $school = schools::find($request->get('id'));
+          $school->dltvstatus = '1';
+          if($school->save()){
+            //return $school->studentstatus;
+            return Redirect('dltv');
+          }
         }
       }
-      return View('teacher.form')
-        ->with('teacher', $dltv)
-        ->with('school', $school);
+      return View('dltv.form')
+        ->with('dltv', $dltv);
     }
 }

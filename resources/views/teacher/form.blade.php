@@ -3,9 +3,12 @@
 @section('content')
 <center><h4>ข้อมูลจำนวนครูและบุคลากร</h4></center>
 {!! Form::model($teacher, array('class'=>'form-horizontal')) !!}
-{!! Form::hidden('id',$school ) !!}
-{!! Form::hidden('head_school_id',$head_school_id ) !!}
-{!! Form::hidden('teacherstatus',1 ) !!}
+
+@if($user[0]->permission == 0)
+{!! Form::hidden('id',$user[0]->id ) !!}
+@else
+{!! Form::hidden('id',$id ) !!}
+@endif
 <div class="flash-message">
     @foreach (['danger', 'warning', 'success', 'info'] as $msg)
       @if(Session::has('alert-' . $msg))

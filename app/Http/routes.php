@@ -50,4 +50,4 @@ Route::any('schoolstudentForm/{id?}', 'schoolStudentController@form');
 Route::any('studentForm/{id?}', 'StudentController@form');
 
 Route::get('dltv', 'dltvController@index');
-Route::any('dltv/{id?}', 'dltvController@form');
+Route::any('dltvForm/{id?}', 'dltvController@form');
