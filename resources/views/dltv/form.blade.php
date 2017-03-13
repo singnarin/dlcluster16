@@ -1,49 +1,132 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Document</title>
-    <style type="text/css">
-    .mylabel{
-        display: inline-block;
-        width: 150px;
-        margin-bottom: 10px;
-    }
-    </style>
-</head>
-<body>
+<?php $user = Session::get('user');?>
+@extends('layouts.master')
+@section('content')
+<center><h3>สภาพการดำเนินงาน DLTV </h3></center>
+{!! Form::model($dltv, array('class'=>'form-horizontal')) !!}
+@if($user[0]->permission == 0)
+{!! Form::hidden('id',$user[0]->id ) !!}
+@else
+{!! Form::hidden('id',$id ) !!}
+@endif
+<div class="flash-message">
+    @foreach (['danger', 'warning', 'success', 'info'] as $msg)
+      @if(Session::has('alert-' . $msg))
+      <p class="alert alert-{{ $msg }}" align='center'>{{ Session::get('alert-' . $msg) }} <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a></p>
+      @endif
+    @endforeach
+  </div> <!-- end .flash-message -->
 
-<br><br>
-
-<div style="margin:auto;width:800px;">
-
-<form name="myform1" id="myform1" action="" method="post">
-
-<span class="mylabel">Radio 1:</span>
-<input type="radio" name="myradio" id="myradio1" value="1" checked="checked">
-<br>
-<span class="mylabel">Radio 2:</span>
-<input type="radio" name="myradio" id="myradio2" value="2">
-<br>
-<div id="place_select">
-<span class="mylabel">Select:</span>
-<select name="myselect">
-    <option value="">Select</option>
-    <option value="1">data 1</option>
-    <option value="2">data 2</option>
-</select>
-<br>
-<span class="mylabel">Select 2:</span>
-<select name="myselect2">
-    <option value="">Select</option>
-    <option value="1">data 1</option>
-    <option value="2">data 2</option>
-</select>
-<br>
+<div class="container-fluid">
+  <h4>1. ปัจจุบันโรงเรียนใช้การจัดการศึกษาทางไกลผ่านดาวเทียมในระดับชั้น</h4>
+  <div class="col-xs-6 col-md-4">
+    <div class="form-group">
+      <input type="radio" name="dltvLevel" id="dltvLevel1" value="1">
+      {!! Form::label('dltvLevel', 'ป.1-ป.6', array('class' => 'control-label')) !!}
+    </div>
+    <div class="form-group">
+      <input type="radio" name="dltvLevel" id="dltvLevel2" value="2">
+      {!! Form::label('dltvLevel', 'บางระดับชั้น', array('class' => 'control-label')) !!}
+      {!! Form::text('dltvLevelOther',$dltv->dltvLevelOther,array('class' => 'form-control')) !!}
+    </div>
+    <div class="form-group">
+      <input type="radio" name="dltvLevel" id="dltvLevel3" value="3">
+      {!! Form::label('dltvLevel', 'ไม่ได้ใช้การจัดการศึกษาทางไกลผ่านดาวเทียม', array('class' => 'control-label')) !!}
+      {!! Form::text('dltvLevelOther',$dltv->dltvLevelOther,array('class' => 'form-control')) !!}
+    </div>
+    <div class="form-group">
+      <input type="radio" name="dltvLevel" id="dltvLevel4" value="4">
+      {!! Form::label('dltvLevel', 'อื่นๆ:', array('class' => 'control-label')) !!}
+      {!! Form::text('dltvLevelOther',$dltv->dltvLevelOther,array('class' => 'form-control')) !!}
+    </div>
+  </div>
 </div>
-</form>
 
- </div>
+<div id="place_select">
+
+  <div class="container-fluid">
+    <h4>2. ข้อมูลเกี่ยวกับชุดอุปกรณ์รับสัญญาณดาวเทียมของโรงเรียน</h4>
+        <h5>2.1 จานรับสัญญาณดาวเทียมที่ใช้งานได้ จำนวน (ห้อง)</h5>
+      <div class="form-group">
+        <div class="col-xs-3">
+          {!! Form::text('dltvSatelliteNum',$dltv->dltvSatelliteNum,array('class' => 'form-control')) !!}
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="col-xs-3">
+          <input type="radio" name="dltvLevel" id="dltvLevel4" value="4">
+          {!! Form::label('dltvLevel', 'เพียงพอ', array('class' => 'control-label')) !!}
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="col-xs-3">
+          <input type="radio" name="dltvLevel" id="dltvLevel4" value="4">
+          {!! Form::label('dltvLevel', 'ไม่เพียงพอ', array('class' => 'control-label')) !!}
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="col-xs-3">
+          {!! Form::label('dltvLevel', 'ต้องการจานรับสัญญาณดาวเทียม จำนวน', array('class' => 'control-label')) !!}
+          {!! Form::text('dltvLevelOther',$dltv->dltvLevelOther,array('class' => 'form-control')) !!}
+        </div>
+      </div>
+  </div>
+
+  <div class="container-fluid">
+
+        <h5>2.2 หัวรับสัญญาณดาวเทียม LNB(ชุด)</h5>
+      <div class="form-group">
+        <div class="col-xs-3">
+          {!! Form::text('dltvSatelliteNum',$dltv->dltvSatelliteNum,array('class' => 'form-control')) !!}
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="col-xs-3">
+          <input type="radio" name="dltvLevel" id="dltvLevel4" value="4">
+          {!! Form::label('dltvLevel', 'เพียงพอ', array('class' => 'control-label')) !!}
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="col-xs-3">
+          <input type="radio" name="dltvLevel" id="dltvLevel4" value="4">
+          {!! Form::label('dltvLevel', 'ไม่เพียงพอ', array('class' => 'control-label')) !!}
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="col-xs-3">
+          {!! Form::label('dltvLevel', 'ต้องการหัวรับสัญญาณดาวเทียม LNB(ชุด)', array('class' => 'control-label')) !!}
+          {!! Form::text('dltvLevelOther',$dltv->dltvLevelOther,array('class' => 'form-control')) !!}
+        </div>
+      </div>
+  </div>
+  <div class="container-fluid">
+
+        <h5>2.3 เครื่องรับสัญญาณดาวเทียมที่ใช้งานได้ จำนวน(เครื่อง)</h5>
+      <div class="form-group">
+        <div class="col-xs-3">
+          {!! Form::text('dltvSatelliteNum',$dltv->dltvSatelliteNum,array('class' => 'form-control')) !!}
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="col-xs-3">
+          <input type="radio" name="dltvLevel" id="dltvLevel4" value="4">
+          {!! Form::label('dltvLevel', 'เพียงพอ', array('class' => 'control-label')) !!}
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="col-xs-3">
+          <input type="radio" name="dltvLevel" id="dltvLevel4" value="4">
+          {!! Form::label('dltvLevel', 'ไม่เพียงพอ', array('class' => 'control-label')) !!}
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="col-xs-3">
+          {!! Form::label('dltvLevel', 'ต้องการเครื่องรับสัญญาณดาวเทียม จำนวน', array('class' => 'control-label')) !!}
+          {!! Form::text('dltvLevelOther',$dltv->dltvLevelOther,array('class' => 'form-control')) !!}
+        </div>
+      </div>
+  </div>
+</div>
+
 
 
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
@@ -52,9 +135,9 @@
 $(function(){
 
     // เมื่อ radio ชื่อว่า myradio ถูก คลิก
-    $(":radio[name='myradio']").on("click",function(){
+    $(":radio[name='dltvLevel']").on("click",function(){
         var valData=$(this).val(); // เก็บค่า ไว้ในตัวแปร
-        if(valData==2){ // เปรียบเทียบค่า
+        if(valData==3 | valData==4){ // เปรียบเทียบค่า
             $("#place_select").hide(); // ซ่อนส่วนที่ต้องการ
         }else{
             $("#place_select").show();   //แสดงส่วนที่ต้องการ
@@ -63,5 +146,16 @@ $(function(){
 
 });
 </script>
-</body>
-</html>
+
+<div class="form-action" align="center">
+  {!! Form::submit('บันทึกข้อมูล', array('class'=>'btn btn-success')) !!}
+  @if(@$user[0]->permission == 0)
+  {!! Html::link('student', 'ยกเลิก', array('class'=>'btn btn-primary')) !!}
+  @else
+  {!! Html::link('schoolstudent', 'ยกเลิก', array('class'=>'btn btn-primary')) !!}
+  @endif
+  <br /><br /><br />
+</div>
+{!! Form::close() !!}
+
+@stop

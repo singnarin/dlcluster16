@@ -35,6 +35,8 @@ class dltvController extends Controller
       }
 
       if($request->all()){
+        return $request->get('myradio');
+        /*
         $dltv->id = $request->get('id');
         $dltv->head_school_id = $student->School->head_school_id;
         $dltv->dltvLevel = $request->get('dltvLevel');
@@ -64,7 +66,7 @@ class dltvController extends Controller
             //return $school->studentstatus;
             return Redirect('dltv');
           }
-        }
+        }*/
       }
       return View('dltv.form')
         ->with('dltv', $dltv);
