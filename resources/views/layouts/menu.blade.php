@@ -17,7 +17,7 @@
       </li>
       <li><a href="../dltv"><span class="glyphicon glyphicon-facetime-video"></span> DLTV</a></li>
       <li><a href="#"><span class="glyphicon glyphicon-cloud"></span> DLIT</a></li>
-      <li><a href="#"><span class="glyphicon glyphicon-warning-sign"></span> ข้อมูลไฟฟ้า</a></li>
+      <li><a href="../electricity"><span class="glyphicon glyphicon-warning-sign"></span> ข้อมูลไฟฟ้า</a></li>
     </ul>
     @endif
     @if(!empty($user[0]->schoolName))

@@ -18,7 +18,7 @@
 
 <div class="container-fluid">
   <h4>1. ปัจจุบันโรงเรียนใช้การจัดการศึกษาทางไกลผ่านดาวเทียมในระดับชั้น</h4>
-  <div class="col-xs-6 col-md-4">
+  <div class="col-xs-8 col-md-6">
     <div class="form-group">
       <input type="radio" name="dltvLevel" id="dltvLevel1" value="1">
       {!! Form::label('dltvLevel', 'ป.1-ป.6', array('class' => 'control-label')) !!}
@@ -26,17 +26,17 @@
     <div class="form-group">
       <input type="radio" name="dltvLevel" id="dltvLevel2" value="2">
       {!! Form::label('dltvLevel', 'บางระดับชั้น', array('class' => 'control-label')) !!}
-      {!! Form::text('dltvLevelOther',$dltv->dltvLevelOther,array('class' => 'form-control')) !!}
+      {!! Form::text('dltvLevelOther',$dltv->dltvLevelOther,array('class' => 'form-control','placeholder' => 'โปรดระบุชั้น')) !!}
     </div>
     <div class="form-group">
       <input type="radio" name="dltvLevel" id="dltvLevel3" value="3">
       {!! Form::label('dltvLevel', 'ไม่ได้ใช้การจัดการศึกษาทางไกลผ่านดาวเทียม', array('class' => 'control-label')) !!}
-      {!! Form::text('dltvLevelOther',$dltv->dltvLevelOther,array('class' => 'form-control')) !!}
+      {!! Form::text('dltvLevelOther',$dltv->dltvLevelOther,array('class' => 'form-control','placeholder' => 'โปรดระบุเหตุผล')) !!}
     </div>
     <div class="form-group">
       <input type="radio" name="dltvLevel" id="dltvLevel4" value="4">
       {!! Form::label('dltvLevel', 'อื่นๆ:', array('class' => 'control-label')) !!}
-      {!! Form::text('dltvLevelOther',$dltv->dltvLevelOther,array('class' => 'form-control')) !!}
+      {!! Form::text('dltvLevelOther',$dltv->dltvLevelOther,array('class' => 'form-control','placeholder' => 'โปรดระบุ')) !!}
     </div>
   </div>
 </div>
@@ -73,7 +73,7 @@
 
   <div class="container-fluid">
 
-        <h5>2.2 หัวรับสัญญาณดาวเทียม LNB(ชุด)</h5>
+    <h5>2.2 หัวรับสัญญาณดาวเทียม LNB(ชุด)</h5>
       <div class="form-group">
         <div class="col-xs-3">
           {!! Form::text('dltvSatelliteNum',$dltv->dltvSatelliteNum,array('class' => 'form-control')) !!}
@@ -98,6 +98,7 @@
         </div>
       </div>
   </div>
+
   <div class="container-fluid">
 
         <h5>2.3 เครื่องรับสัญญาณดาวเทียมที่ใช้งานได้ จำนวน(เครื่อง)</h5>
@@ -125,6 +126,68 @@
         </div>
       </div>
   </div>
+
+  <div class="container-fluid">
+    <h4>3. ข้อมูลเกี่ยวกับการรับสัญญาณดาวเทียม</h4>
+    <div class="col-xs-8 col-md-6">
+      <div class="form-group">
+        <input type="radio" name="dltvProblem" id="dltvProblem1" value="1">
+        {!! Form::label('dltvLevel', 'ไม่มีปัญหาการรับสัญญาณดาวเทียม', array('class' => 'control-label')) !!}
+      </div>
+      <div class="form-group">
+        <input type="radio" name="dltvProblem" id="dltvProblem2" value="2">
+        {!! Form::label('dltvLevel', 'มีปัญหาระบบการรับสัญญาณดาวเทียม', array('class' => 'control-label')) !!}
+
+      <div id="place_select1">
+        {!! Form::label('dltvLevel', 'ปัญหาเกี่ยวกับระบบรับสัญญาณดาวเทียม', array('class' => 'control-label')) !!}
+        {!! Form::textArea('dltvLevelOther',$dltv->dltvLevelOther,array('class' => 'form-control')) !!}
+        {!! Form::label('dltvLevel', 'วิธีการ/ความต้องการในการแก้ปัญหาระบบรับสัญญาณดาวเทียม', array('class' => 'control-label')) !!}
+        {!! Form::textArea('dltvLevelOther',$dltv->dltvLevelOther,array('class' => 'form-control')) !!}
+      </div>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="container-fluid">
+    <h4>ภาพกิจกรรม DLTV จำนวน 4 ภาพ</h4>
+    <div class="col-xs-8 col-md-6">
+      <div class="form-group">
+        {!! Form::file('dltvLevelOther',array('class' => 'form-control')) !!}
+        {!! Form::text('dltvLevelOther',$dltv->dltvLevelOther,array('class' => 'form-control','placeholder' => 'คำบรรยายภาพ')) !!}
+      </div>
+      <div class="form-group">
+        {!! Form::file('dltvLevelOther',array('class' => 'form-control')) !!}
+        {!! Form::text('dltvLevelOther',$dltv->dltvLevelOther,array('class' => 'form-control','placeholder' => 'คำบรรยายภาพ')) !!}
+      </div>
+      <div class="form-group">
+        {!! Form::file('dltvLevelOther',array('class' => 'form-control')) !!}
+        {!! Form::text('dltvLevelOther',$dltv->dltvLevelOther,array('class' => 'form-control','placeholder' => 'คำบรรยายภาพ')) !!}
+      </div>
+      <div class="form-group">
+        {!! Form::file('dltvLevelOther',array('class' => 'form-control')) !!}
+        {!! Form::text('dltvLevelOther',$dltv->dltvLevelOther,array('class' => 'form-control','placeholder' => 'คำบรรยายภาพ')) !!}
+      </div>
+    </div>
+  </div>
+
+  <div class="container-fluid">
+    <div class="col-xs-6 col-md-4">
+      <div class="form-group">
+        {!! Form::label('dltvLevel', 'ลงชื่อ ผู้บันทึกข้อมูล', array('class' => 'control-label')) !!}
+        {!! Form::text('dltvLevelOther',$dltv->dltvLevelOther,array('class' => 'form-control')) !!}
+      </div>
+      <div class="form-group">
+        {!! Form::label('dltvLevel', 'ลงชื่อ ผู้อำนวยการโรงเรียน', array('class' => 'control-label')) !!}
+        {!! Form::text('dltvLevelOther',$dltv->dltvLevelOther,array('class' => 'form-control')) !!}
+      </div>
+      <div class="form-group">
+        {!! Form::label('dltvLevel', 'หมายเลขโทรศัพท์ผู้อำนวยการโรงเรียน *', array('class' => 'control-label')) !!}
+        {!! Form::text('dltvLevelOther',$dltv->dltvLevelOther,array('class' => 'form-control')) !!}
+      </div>
+    </div>
+  </div>
+
 </div>
 
 
@@ -133,7 +196,6 @@
 <!--<script type="text/javascript" src="js.js"></script>  -->
 <script type="text/javascript">
 $(function(){
-
     // เมื่อ radio ชื่อว่า myradio ถูก คลิก
     $(":radio[name='dltvLevel']").on("click",function(){
         var valData=$(this).val(); // เก็บค่า ไว้ในตัวแปร
@@ -141,6 +203,15 @@ $(function(){
             $("#place_select").hide(); // ซ่อนส่วนที่ต้องการ
         }else{
             $("#place_select").show();   //แสดงส่วนที่ต้องการ
+        }
+    });
+
+    $(":radio[name='dltvProblem']").on("click",function(){
+        var valData=$(this).val(); // เก็บค่า ไว้ในตัวแปร
+        if(valData==1){ // เปรียบเทียบค่า
+            $("#place_select1").hide(); // ซ่อนส่วนที่ต้องการ
+        }else{
+            $("#place_select1").show();   //แสดงส่วนที่ต้องการ
         }
     });
 
