@@ -51,6 +51,7 @@ Route::any('studentForm/{id?}', 'StudentController@form');
 
 Route::get('dltv', 'dltvController@index');
 Route::any('dltvForm/{id?}', 'dltvController@form');
+Route::get('primarydltv', 'dltvController@primarydltv');
 
 Route::get('electricity', 'electricityController@index');
 Route::any('electricityForm/{id?}', 'electricityController@form');
