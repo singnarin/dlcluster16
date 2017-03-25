@@ -44,16 +44,16 @@ class dltvController extends Controller
             ->with('dltv', $dltv);
         }
         if ($request->get('dltvLevel') == 1) {
-          $dltv->dltvLevel = 'ป.1-ป.6';
+          $dltv->dltvLevel = 'p1_p6';
           $dltv->dltvLevelDetail = '-';
         } elseif ($request->get('dltvLevel') == 2) {
-          $dltv->dltvLevel = 'บางระดับชั้น';
+          $dltv->dltvLevel = 'someone';
           $dltv->dltvLevelDetail = $request->get('dltvLevelDetail2');
         } elseif ($request->get('dltvLevel') == 3) {
-          $dltv->dltvLevel = 'ไม่ได้ใช้การจัดการศึกษาทางไกลผ่านดาวเทียม';
+          $dltv->dltvLevel = 'not';
           $dltv->dltvLevelDetail = $request->get('dltvLevelDetail3');
         } elseif ($request->get('dltvLevel') == 4) {
-          $dltv->dltvLevel = 'อื่นๆ:';
+          $dltv->dltvLevel = 'other';
           $dltv->dltvLevelDetail = $request->get('dltvLevelDetail4');
         }
 
@@ -160,13 +160,11 @@ class dltvController extends Controller
       }else{
         $id = $user[0]->id ;
         $school = Dltvs::where('head_school_id', '=', $id)
-          ->selectRaw('id, count(dltvLevel) as dltvLevel1')
+          ->selectRaw('id,dltvLevel, count(*) as count_level')
           ->groupBy('dltvLevel')
-        //->selectRaw('')
-        ->get();
-        return $school->dltvLevel1;
-          //return View('teacher.primaryteacher')
-          //  ->with('school', $school);
+          ->get();
+        return View('dltv.primarydltv')
+          ->with('school', $school);
       }
     }
 }

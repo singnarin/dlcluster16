@@ -58,30 +58,32 @@
           {!! Form::text('dltvSatelliteNum',$dltv->dltvSatelliteNum,array('class' => 'form-control')) !!}
         </div>
         <div class="form-group">
-          <input type="radio" name="dltvSatelliteWant" id="" value="เพียงพอ">
+          <input type="radio" name="dltvSatelliteWant" id="" value="0">
           {!! Form::label('dltvSatelliteWant', 'เพียงพอ', array('class' => 'control-label')) !!}
         </div>
         <div class="form-group">
-          <input type="radio" name="dltvSatelliteWant" id="" value="ไม่เพียงพอ">
+          <input type="radio" name="dltvSatelliteWant" id="" value="1">
           {!! Form::label('dltvLevel', 'ไม่เพียงพอ', array('class' => 'control-label')) !!}
         </div>
-        <div class="form-group">
+
+        <div class="form-group" id="place_select2">
           {!! Form::label('dltvSatelliteWantNum', 'ต้องการจานรับสัญญาณดาวเทียม จำนวน', array('class' => 'control-label')) !!}
           {!! Form::text('dltvSatelliteWantNum',$dltv->dltvSatelliteWantNum,array('class' => 'form-control')) !!}
         </div>
+
         <h5>2.2 หัวรับสัญญาณดาวเทียม LNB(ชุด)</h5>
         <div class="form-group">
           {!! Form::text('dltvLnbNum',$dltv->dltvLnbNum,array('class' => 'form-control')) !!}
         </div>
         <div class="form-group">
-          <input type="radio" name="dltvLnbWant" id="" value="ไม่เพียงพอ">
+          <input type="radio" name="dltvLnbWant" id="" value="0">
           {!! Form::label('dltvLnbWant', 'เพียงพอ', array('class' => 'control-label')) !!}
         </div>
         <div class="form-group">
-          <input type="radio" name="dltvLnbWant" id="" value="ไม่เพียงพอ">
+          <input type="radio" name="dltvLnbWant" id="" value="1">
           {!! Form::label('dltvLnbWant', 'ไม่เพียงพอ', array('class' => 'control-label')) !!}
         </div>
-        <div class="form-group">
+        <div class="form-group" id="place_select3">
           {!! Form::label('dltvLnbWantNum', 'ต้องการหัวรับสัญญาณดาวเทียม LNB(ชุด)', array('class' => 'control-label')) !!}
           {!! Form::text('dltvLnbWantNum',$dltv->dltvLnbWantNum,array('class' => 'form-control')) !!}
         </div>
@@ -90,14 +92,14 @@
           {!! Form::text('dltvReceiverNum',$dltv->dltvReceiverNum,array('class' => 'form-control')) !!}
         </div>
         <div class="form-group">
-          <input type="radio" name="dltvReceiverWant" id="" value="เพียงพอ">
+          <input type="radio" name="dltvReceiverWant" id="dltvReceiverWant1" value="0">
           {!! Form::label('dltvReceiverWant', 'เพียงพอ', array('class' => 'control-label')) !!}
         </div>
         <div class="form-group">
-          <input type="radio" name="dltvReceiverWant" id="" value="ไม่เพียงพอ">
+          <input type="radio" name="dltvReceiverWant" id="dltvReceiverWant2" value="1">
           {!! Form::label('dltvReceiverWant', 'ไม่เพียงพอ', array('class' => 'control-label')) !!}
         </div>
-        <div class="form-group">
+        <div class="form-group" id="place_select4">
           {!! Form::label('dltvReceiverWantNum', 'ต้องการเครื่องรับสัญญาณดาวเทียม จำนวน', array('class' => 'control-label')) !!}
           {!! Form::text('dltvReceiverWantNum',$dltv->dltvReceiverWantNum,array('class' => 'form-control')) !!}
         </div>
@@ -189,6 +191,33 @@ $(function(){
             $("#place_select1").hide(); // ซ่อนส่วนที่ต้องการ
         }else{
             $("#place_select1").show();   //แสดงส่วนที่ต้องการ
+        }
+    });
+
+    $(":radio[name='dltvSatelliteWant']").on("click",function(){
+        var valData=$(this).val(); // เก็บค่า ไว้ในตัวแปร
+        if(valData==0){ // เปรียบเทียบค่า
+            $("#place_select2").hide(); // ซ่อนส่วนที่ต้องการ
+        }else{
+            $("#place_select2").show();   //แสดงส่วนที่ต้องการ
+        }
+    });
+
+    $(":radio[name='dltvLnbWant']").on("click",function(){
+        var valData=$(this).val(); // เก็บค่า ไว้ในตัวแปร
+        if(valData==0){ // เปรียบเทียบค่า
+            $("#place_select3").hide(); // ซ่อนส่วนที่ต้องการ
+        }else{
+            $("#place_select3").show();   //แสดงส่วนที่ต้องการ
+        }
+    });
+
+    $(":radio[name='dltvReceiverWant']").on("click",function(){
+        var valData=$(this).val(); // เก็บค่า ไว้ในตัวแปร
+        if(valData==0){ // เปรียบเทียบค่า
+            $("#place_select4").hide(); // ซ่อนส่วนที่ต้องการ
+        }else{
+            $("#place_select4").show();   //แสดงส่วนที่ต้องการ
         }
     });
 
