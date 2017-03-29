@@ -159,12 +159,309 @@ class dltvController extends Controller
         return View('site.loginForm');
       }else{
         $id = $user[0]->id ;
-        $school = Dltvs::where('head_school_id', '=', $id)
+        $dltvLevel = Dltvs::where('head_school_id', '=', $id)
           ->selectRaw('id,dltvLevel, count(*) as count_level')
           ->groupBy('dltvLevel')
           ->get();
+        $dltvSatelliteNum = Dltvs::where('head_school_id', '=', $id)
+          ->sum('dltvSatelliteNum');
+        $dltvSatelliteWant = Dltvs::where('head_school_id', '=', $id)
+          ->selectRaw('id,dltvSatelliteWant, count(*) as count_dltvSatelliteWant')
+          ->groupBy('dltvSatelliteWant')
+          ->get();
+        $dltvSatelliteWantNum = Dltvs::where('head_school_id', '=', $id)
+          ->sum('dltvSatelliteWantNum');
+        $dltvLnbNum = Dltvs::where('head_school_id', '=', $id)
+          ->sum('dltvLnbNum');
+        $dltvLnbWant = Dltvs::where('head_school_id', '=', $id)
+          ->selectRaw('id,dltvLnbWant, count(*) as count_dltvLnbWant')
+          ->groupBy('dltvLnbWant')
+          ->get();
+        $dltvLnbWantNum = Dltvs::where('head_school_id', '=', $id)
+          ->sum('dltvLnbWantNum');
+        $dltvReceiverNum = Dltvs::where('head_school_id', '=', $id)
+          ->sum('dltvReceiverNum');
+        $dltvReceiverWant = Dltvs::where('head_school_id', '=', $id)
+          ->selectRaw('id,dltvReceiverWant, count(*) as count_dltvReceiverWant')
+          ->groupBy('dltvReceiverWant')
+          ->get();
+        $dltvReceiverWantNum = Dltvs::where('head_school_id', '=', $id)
+          ->sum('dltvReceiverWantNum');
+        $dltvProblem = Dltvs::where('head_school_id', '=', $id)
+          ->selectRaw('id,dltvProblem, count(*) as count_dltvProblem')
+          ->groupBy('dltvProblem')
+          ->get();
         return View('dltv.primarydltv')
-          ->with('school', $school);
+          ->with('dltvLevel', $dltvLevel)
+          ->with('dltvSatelliteNum', $dltvSatelliteNum)
+          ->with('dltvSatelliteWant', $dltvSatelliteWant)
+          ->with('dltvSatelliteWantNum', $dltvSatelliteWantNum)
+          ->with('dltvLnbNum', $dltvLnbNum)
+          ->with('dltvLnbWant', $dltvLnbWant)
+          ->with('dltvLnbWantNum', $dltvLnbWantNum)
+          ->with('dltvReceiverNum', $dltvReceiverNum)
+          ->with('dltvReceiverWant', $dltvReceiverWant)
+          ->with('dltvReceiverWantNum', $dltvReceiverWantNum)
+          ->with('dltvProblem', $dltvProblem)
+          ;
       }
     }
+
+    public function schoolDltv(){
+      $user = Session::get('user');
+      if(empty($user)){
+        return View('site.loginForm');
+      }else{
+        $id = $user[0]->id ;
+        $school_ok = Schools::where('dltvstatus', '=', 1)
+        ->where('head_school_id', '=', $id)
+        ->count();
+        $school_not = Schools::where('dltvstatus', '=', 0)
+        ->where('head_school_id', '=', $id)
+        ->count();
+        $school = Schools::where('head_school_id', '=', $id)
+        ->paginate(100);
+        return View('dltv.select')
+            ->with('school', $school)
+            ->with('school_ok', $school_ok)
+            ->with('school_not', $school_not);
+      }
+    }
+
+    public function primaryindex(Request $request, $id = null){
+      $user = Session::get('user');
+
+      if(empty($user)){
+        return View('site.loginForm');
+      }else{
+        $id = $request->id ;
+        $school = Dltvs::find($id);
+          return View('dltv.primary')
+            ->with('school', $school);
+        }
+      }
+
+      public function clusterdltv(){
+        $user = Session::get('user');
+        if(empty($user)){
+          return View('site.loginForm');
+        }else{
+          $id = $user[0]->id ;
+          $dltvLevel = Dltvs::where('head_school_id', '<>', $id)
+            ->selectRaw('id,dltvLevel, count(*) as count_level')
+            ->groupBy('dltvLevel')
+            ->get();
+          $dltvSatelliteNum = Dltvs::where('head_school_id', '<>', $id)
+            ->sum('dltvSatelliteNum');
+          $dltvSatelliteWant = Dltvs::where('head_school_id', '<>', $id)
+            ->selectRaw('id,dltvSatelliteWant, count(*) as count_dltvSatelliteWant')
+            ->groupBy('dltvSatelliteWant')
+            ->get();
+          $dltvSatelliteWantNum = Dltvs::where('head_school_id', '<>', $id)
+            ->sum('dltvSatelliteWantNum');
+          $dltvLnbNum = Dltvs::where('head_school_id', '<>', $id)
+            ->sum('dltvLnbNum');
+          $dltvLnbWant = Dltvs::where('head_school_id', '<>', $id)
+            ->selectRaw('id,dltvLnbWant, count(*) as count_dltvLnbWant')
+            ->groupBy('dltvLnbWant')
+            ->get();
+          $dltvLnbWantNum = Dltvs::where('head_school_id', '<>', $id)
+            ->sum('dltvLnbWantNum');
+          $dltvReceiverNum = Dltvs::where('head_school_id', '<>', $id)
+            ->sum('dltvReceiverNum');
+          $dltvReceiverWant = Dltvs::where('head_school_id', '<>', $id)
+            ->selectRaw('id,dltvReceiverWant, count(*) as count_dltvReceiverWant')
+            ->groupBy('dltvReceiverWant')
+            ->get();
+          $dltvReceiverWantNum = Dltvs::where('head_school_id', '<>', $id)
+            ->sum('dltvReceiverWantNum');
+          $dltvProblem = Dltvs::where('head_school_id', '<>', $id)
+            ->selectRaw('id,dltvProblem, count(*) as count_dltvProblem')
+            ->groupBy('dltvProblem')
+            ->get();
+          return View('dltv.primarydltv')
+            ->with('dltvLevel', $dltvLevel)
+            ->with('dltvSatelliteNum', $dltvSatelliteNum)
+            ->with('dltvSatelliteWant', $dltvSatelliteWant)
+            ->with('dltvSatelliteWantNum', $dltvSatelliteWantNum)
+            ->with('dltvLnbNum', $dltvLnbNum)
+            ->with('dltvLnbWant', $dltvLnbWant)
+            ->with('dltvLnbWantNum', $dltvLnbWantNum)
+            ->with('dltvReceiverNum', $dltvReceiverNum)
+            ->with('dltvReceiverWant', $dltvReceiverWant)
+            ->with('dltvReceiverWantNum', $dltvReceiverWantNum)
+            ->with('dltvProblem', $dltvProblem)
+            ;
+      }
+    }
+
+    public function clusterprimarydltv(){
+      $user = Session::get('user');
+      if(empty($user)){
+        return View('site.loginForm');
+      }else{
+        $id = $user[0]->id ;
+        $school = Schools::where('head_school_id', '=', $id)
+        ->paginate(100);
+        return View('dltv.clusterselect')
+            ->with('school', $school);
+      }
+    }
+
+    public function clusterprimarydltvs(Request $request, $id = null){
+      $user = Session::get('user');
+      if(empty($user)){
+        return View('site.loginForm');
+      }else{
+        $id = $request->id;
+        $dltvLevel = Dltvs::where('head_school_id', '=', $id)
+          ->selectRaw('id,dltvLevel, count(*) as count_level')
+          ->groupBy('dltvLevel')
+          ->get();
+        $dltvSatelliteNum = Dltvs::where('head_school_id', '=', $id)
+          ->sum('dltvSatelliteNum');
+        $dltvSatelliteWant = Dltvs::where('head_school_id', '=', $id)
+          ->selectRaw('id,dltvSatelliteWant, count(*) as count_dltvSatelliteWant')
+          ->groupBy('dltvSatelliteWant')
+          ->get();
+        $dltvSatelliteWantNum = Dltvs::where('head_school_id', '=', $id)
+          ->sum('dltvSatelliteWantNum');
+        $dltvLnbNum = Dltvs::where('head_school_id', '=', $id)
+          ->sum('dltvLnbNum');
+        $dltvLnbWant = Dltvs::where('head_school_id', '=', $id)
+          ->selectRaw('id,dltvLnbWant, count(*) as count_dltvLnbWant')
+          ->groupBy('dltvLnbWant')
+          ->get();
+        $dltvLnbWantNum = Dltvs::where('head_school_id', '=', $id)
+          ->sum('dltvLnbWantNum');
+        $dltvReceiverNum = Dltvs::where('head_school_id', '=', $id)
+          ->sum('dltvReceiverNum');
+        $dltvReceiverWant = Dltvs::where('head_school_id', '=', $id)
+          ->selectRaw('id,dltvReceiverWant, count(*) as count_dltvReceiverWant')
+          ->groupBy('dltvReceiverWant')
+          ->get();
+        $dltvReceiverWantNum = Dltvs::where('head_school_id', '=', $id)
+          ->sum('dltvReceiverWantNum');
+        $dltvProblem = Dltvs::where('head_school_id', '=', $id)
+          ->selectRaw('id,dltvProblem, count(*) as count_dltvProblem')
+          ->groupBy('dltvProblem')
+          ->get();
+        return View('dltv.primarydltv')
+          ->with('dltvLevel', $dltvLevel)
+          ->with('dltvSatelliteNum', $dltvSatelliteNum)
+          ->with('dltvSatelliteWant', $dltvSatelliteWant)
+          ->with('dltvSatelliteWantNum', $dltvSatelliteWantNum)
+          ->with('dltvLnbNum', $dltvLnbNum)
+          ->with('dltvLnbWant', $dltvLnbWant)
+          ->with('dltvLnbWantNum', $dltvLnbWantNum)
+          ->with('dltvReceiverNum', $dltvReceiverNum)
+          ->with('dltvReceiverWant', $dltvReceiverWant)
+          ->with('dltvReceiverWantNum', $dltvReceiverWantNum)
+          ->with('dltvProblem', $dltvProblem)
+          ;
+        }
+      }
+
+      public function dltvsearch(){
+        $user = Session::get('user');
+        if(empty($user)){
+          return View('site.loginForm');
+        }else{
+          $id = $user[0]->id ;
+          $school_ok = Schools::where('dltvstatus', '=', 1)
+            ->where('permission', '<>', '1')
+            ->where('permission', '<>', '2')
+            ->count();
+          $school_not = Schools::where('dltvstatus', '=', 0)
+            ->where('permission', '<>', '1')
+            ->where('permission', '<>', '2')
+            ->count();
+          $school = Schools::where('permission', '<>', '1')
+            ->where('permission', '<>', '2')
+            ->paginate(15);
+          return View('dltv.clusterselectschool')
+              ->with('school', $school)
+              ->with('school_ok', $school_ok)
+              ->with('school_not', $school_not);
+        }
+      }
+
+      public function schooldltvsearch(Request $request, $id = null){
+        $user = Session::get('user');
+        if(empty($user)){
+          return View('site.loginForm');
+        }else{
+          $id = $request->get('id');
+          if(empty($id)){
+            $school_ok = Schools::where('dltvstatus', '=', 1)
+              ->where('permission', '<>', '1')
+              ->where('permission', '<>', '2')
+              ->count();
+            $school_not = Schools::where('dltvstatus', '=', 0)
+              ->where('permission', '<>', '1')
+              ->where('permission', '<>', '2')
+              ->count();
+            $school = Schools::where('permission', '<>', '1')
+              ->where('permission', '<>', '2')
+              ->paginate(15);
+          }else{
+            $school_ok = Schools::where('id', '=', $id)
+              ->where('dltvstatus', '=', 1)
+              ->where('permission', '<>', '1')
+              ->where('permission', '<>', '2')
+              ->count();
+            $school_not = Schools::where('id', '=', $id)
+              ->where('dltvstatus', '=', 0)
+              ->where('permission', '<>', '1')
+              ->where('permission', '<>', '2')
+              ->count();
+            $school = Schools::where('id', '=', $id)
+              ->paginate(15);
+          }
+          return View('dltv.clusterselectschool')
+              ->with('school', $school)
+              ->with('school_ok', $school_ok)
+              ->with('school_not', $school_not);
+        }
+      }
+
+      public function schooldltvsearchp(Request $request, $id = null){
+        $user = Session::get('user');
+        if(empty($user)){
+          return View('site.loginForm');
+        }else{
+          $id = $request->get('id');
+          if(empty($id)){
+            $school_ok = Schools::where('dltvstatus', '=', 1)
+              ->where('permission', '<>', '1')
+              ->where('permission', '<>', '2')
+              ->count();
+            $school_not = Schools::where('dltvstatus', '=', 0)
+              ->where('permission', '<>', '1')
+              ->where('permission', '<>', '2')
+              ->count();
+            $school = Schools::where('permission', '<>', '1')
+              ->where('permission', '<>', '2')
+              ->paginate(15);
+          }else{
+            $school_ok = Schools::where('head_school_id', '=', $id)
+              ->where('dltvstatus', '=', 1)
+              ->where('permission', '<>', '1')
+              ->where('permission', '<>', '2')
+              ->count();
+            $school_not = Schools::where('head_school_id', '=', $id)
+              ->where('dltvstatus', '=', 0)
+              ->where('permission', '<>', '1')
+              ->where('permission', '<>', '2')
+              ->count();
+            $school = Schools::where('head_school_id', '=', $id)
+              ->paginate(15);
+          }
+          return View('dltv.clusterselectschool')
+              ->with('school', $school)
+              ->with('school_ok', $school_ok)
+              ->with('school_not', $school_not);
+        }
+      }
+
 }

@@ -16,7 +16,7 @@
           </ul>
       </li>
       <li><a href="../dltv"><span class="glyphicon glyphicon-facetime-video"></span> DLTV</a></li>
-      <li><a href="#"><span class="glyphicon glyphicon-cloud"></span> DLIT</a></li>
+      <li><a href="../dlit"><span class="glyphicon glyphicon-cloud"></span> DLIT</a></li>
       <li><a href="../electricity"><span class="glyphicon glyphicon-warning-sign"></span> ข้อมูลไฟฟ้า</a></li>
     </ul>
     @endif
@@ -53,7 +53,15 @@
             <li>{!! Html::link('schoolstudent', 'ข้อมูลนักเรียนระดับโรงเรียน') !!}</li>
           </ul>
       </li>
-      <li><a href="#"><span class="glyphicon glyphicon-facetime-video"></span> DLTV</a></li>
+      <li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#"><span class="glyphicon glyphicon-facetime-video"> DLTV</span></a>
+            <ul class="dropdown-menu">
+              <li>{!! Html::link('primarydltv',' ข้อมูล DLTV ระดับเขตพื้นที่') !!}</li>
+              <li>{!! Html::link('schooldltv', ' ข้อมูล DLTV ระดับโรงเรียน') !!}</li>
+            </ul>
+        </li>
+      </li>
       <li><a href="#"><span class="glyphicon glyphicon-cloud"></span> DLIT</a></li>
       <li><a href="#"><span class="glyphicon glyphicon-warning-sign"></span> ข้อมูลไฟฟ้า</a></li>
     </ul>
@@ -61,7 +69,7 @@
     <ul class="nav navbar-nav navbar-right">
       <li><a href="#"><span class="glyphicon glyphicon-user "></span>
           @if(!empty($user[0]->schoolName))
-            {{$user[0]->id}}
+            {{$user[0]->schoolName}}
           @endif
       </a></li>
       <li><a href="../logout"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
@@ -94,7 +102,16 @@
             <li>{!! Html::link('studentsearch', 'ข้อมูลนักเรียนระดับโรงเรียน') !!}</li>
           </ul>
       </li>
-      <li><a href="#"><span class="glyphicon glyphicon-facetime-video"></span> DLTV</a></li>
+      <li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#"><span class="glyphicon glyphicon-facetime-video"> DLTV</span></a>
+            <ul class="dropdown-menu">
+              <li>{!! Html::link('clusterdltv',' ข้อมูล DLTV ระดับ Cluster') !!}</li>
+              <li>{!! Html::link('clusterprimarydltv',' ข้อมูล DLTV ระดับเขตพื้นที่') !!}</li>
+              <li>{!! Html::link('dltvsearch', ' ข้อมูล DLTV ระดับโรงเรียน') !!}</li>
+            </ul>
+        </li>
+      </li>
       <li><a href="#"><span class="glyphicon glyphicon-cloud"></span> DLIT</a></li>
       <li><a href="#"><span class="glyphicon glyphicon-warning-sign"></span> ข้อมูลไฟฟ้า</a></li>
     </ul>

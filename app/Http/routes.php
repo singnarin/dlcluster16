@@ -52,6 +52,30 @@ Route::any('studentForm/{id?}', 'StudentController@form');
 Route::get('dltv', 'dltvController@index');
 Route::any('dltvForm/{id?}', 'dltvController@form');
 Route::get('primarydltv', 'dltvController@primarydltv');
+Route::get('schooldltv', 'dltvController@schoolDltv');
+Route::any('primaryindex/{id?}', 'dltvController@primaryindex');
+//cluster
+Route::get('clusterdltv', 'dltvController@clusterdltv');
+Route::get('clusterprimarydltv', 'dltvController@clusterprimarydltv');
+Route::get('clusterprimarydltvs/{id?}', 'dltvController@clusterprimarydltvs');
+Route::get('dltvsearch', 'dltvController@dltvsearch');
+Route::post('schooldltvsearch', 'dltvController@schooldltvsearch');
+Route::post('schooldltvsearchp', 'dltvController@schooldltvsearchp');
+//end
+
+Route::get('dlit', 'dlitController@index');
+Route::any('dlitForm/{id?}', 'dlitController@form');
+Route::get('primarydlit', 'dlitController@primarydlit');
+Route::get('schooldlit', 'dlitController@schooldlit');
+Route::any('primaryindex/{id?}', 'dlitController@primaryindex');
+//cluster
+Route::get('clusterdlit', 'dlitController@clusterdlit');
+Route::get('clusterprimarydlit', 'dlitController@clusterprimarydlit');
+Route::get('clusterprimarydlits/{id?}', 'dlitController@clusterprimarydlits');
+Route::get('dlitsearch', 'dlitController@dlitsearch');
+Route::post('schooldlitsearch', 'dlitController@schooldlitsearch');
+Route::post('schooldlitsearchp', 'dlitController@schooldlitsearchp');
+//end
 
 Route::get('electricity', 'electricityController@index');
 Route::any('electricityForm/{id?}', 'electricityController@form');
