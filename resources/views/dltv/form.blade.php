@@ -63,7 +63,7 @@
         </div>
         <div class="form-group">
           <input type="radio" name="dltvSatelliteWant" id="" value="1">
-          {!! Form::label('dltvLevel', 'ไม่เพียงพอ', array('class' => 'control-label')) !!}
+          {!! Form::label('dltvSatelliteWant', 'ไม่เพียงพอ', array('class' => 'control-label')) !!}
         </div>
 
         <div class="form-group" id="place_select2">
@@ -227,9 +227,9 @@ $(function(){
 <div class="form-action" align="center">
   {!! Form::submit('บันทึกข้อมูล', array('class'=>'btn btn-success')) !!}
   @if(@$user[0]->permission == 0)
-  {!! Html::link('student', 'ยกเลิก', array('class'=>'btn btn-primary')) !!}
+  {!! Html::link('dltv', 'ยกเลิก', array('class'=>'btn btn-primary')) !!}
   @else
-  {!! Html::link('schoolstudent', 'ยกเลิก', array('class'=>'btn btn-primary')) !!}
+  {!! Html::link('schooldltv', 'ยกเลิก', array('class'=>'btn btn-primary')) !!}
   @endif
   <br /><br /><br />
 </div>
