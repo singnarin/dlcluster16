@@ -4,7 +4,18 @@
 <table class="table">
   <tr>
     <td class="col-md-5">1. ปัจจุบันโรงเรียนใช้ใช้การจัดการศึกษาทางไกลผ่านดาวเทียมในระดับชั้น :</td>
-    <td class="col-md-7"><div >{{$school->dltvLevel}} {{$school->dltvLevelDetail}}</div></td>
+    <td class="col-md-7"><div >
+      @if($school->dltvLevel == 'p1_p6')
+        {{'ป.1 - ป.6'}}
+      @elseif($school->dltvLevel == 'someone')
+        {{'บางระดับชั้น'}}
+      @elseif($school->dltvLevel == 'not')
+        {{'ไม่ได้ใช้'}}
+      @elseif($school->dltvLevel == 'other')
+        {{'อื่นๆ'}}
+      @endif
+      {{$school->dltvLevelDetail}}
+    </div></td>
   </tr>
   <tr>
     <td colspan="2">2. ข้อมูลเกี่ยวกับชุดอุปกรณ์รับสัญญาณดาวเทียมของโรงเรียน</td>
@@ -15,7 +26,13 @@
   </tr>
   <tr>
     <td>ความเพียงพอ :</td>
-    <td>{{$school->dltvSatelliteWant}}</td>
+    <td>
+      @if($school->dltvSatelliteWant == 1)
+        {{'เพียงพอ'}}
+      @elseif($school->dltvSatelliteWant == 2)
+        {{'ไม่เพียงพอ'}}
+      @endif
+    </td>
   </tr>
   <tr>
     <td>ต้องการจานรับสัญญาณดาวเทียม จำนวน :</td>
@@ -27,7 +44,13 @@
   </tr>
   <tr>
     <td>ความเพียงพอ :</td>
-    <td>{{$school->dltvLnbWant}}</td>
+    <td>
+      @if($school->dltvLnbWant == 1)
+        {{'เพียงพอ'}}
+      @elseif($school->dltvLnbWant == 2)
+        {{'ไม่เพียงพอ'}}
+      @endif
+    </td>
   </tr>
   <tr>
     <td>ต้องการหัวรับสัญญาณดาวเทียม LNB จำนวน :</td>
@@ -39,7 +62,13 @@
   </tr>
   <tr>
     <td>ความเพียงพอ :</td>
-    <td>{{$school->dltvReceiverWant}}</td>
+    <td>
+      @if($school->dltvReceiverWant == 1)
+        {{'เพียงพอ'}}
+      @elseif($school->dltvReceiverWant == 2)
+        {{'ไม่เพียงพอ'}}
+      @endif
+    </td>
   </tr>
   <tr>
     <td>ต้องการเครื่องรับสัญญาณดาวเทียม จำนวน :</td>

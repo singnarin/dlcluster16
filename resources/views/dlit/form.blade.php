@@ -58,11 +58,11 @@
           {!! Form::text('pcNum',$dlit->pcNum,array('class' => 'form-control')) !!}
         </div>
         <div class="form-group">
-          <input type="radio" name="pcWant" id="" value="0">
+          <input type="radio" name="pcWant" id="" value="1">
           {!! Form::label('pcWant', 'เพียงพอ', array('class' => 'control-label')) !!}
         </div>
         <div class="form-group">
-          <input type="radio" name="pcWant" id="" value="1">
+          <input type="radio" name="pcWant" id="" value="2">
           {!! Form::label('pcWant', 'ไม่เพียงพอ', array('class' => 'control-label')) !!}
         </div>
 <!--
@@ -76,11 +76,11 @@
           {!! Form::text('nbNum',$dlit->nbNum,array('class' => 'form-control')) !!}
         </div>
         <div class="form-group">
-          <input type="radio" name="nbWant" id="" value="0">
+          <input type="radio" name="nbWant" id="" value="1">
           {!! Form::label('nbWant', 'เพียงพอ', array('class' => 'control-label')) !!}
         </div>
         <div class="form-group">
-          <input type="radio" name="nbWant" id="" value="1">
+          <input type="radio" name="nbWant" id="" value="2">
           {!! Form::label('nbWant', 'ไม่เพียงพอ', array('class' => 'control-label')) !!}
         </div>
 <!--
@@ -94,11 +94,11 @@
           {!! Form::text('svNum',$dlit->svNum,array('class' => 'form-control')) !!}
         </div>
         <div class="form-group">
-          <input type="radio" name="svWant" id="" value="0">
+          <input type="radio" name="svWant" id="" value="1">
           {!! Form::label('svWant', 'เพียงพอ', array('class' => 'control-label')) !!}
         </div>
         <div class="form-group">
-          <input type="radio" name="svWant" id="" value="1">
+          <input type="radio" name="svWant" id="" value="2">
           {!! Form::label('svWant', 'ไม่เพียงพอ', array('class' => 'control-label')) !!}
         </div>
 <!--
@@ -109,14 +109,14 @@
 -->
         <h5>2.4 โทรทัศน์(TV) จำนวน(เครื่อง)</h5>
         <div class="form-group">
-          {!! Form::text('tvNum',$dlit->tvNum,array('class' => 'form-control')) !!}
-        </div>
-        <div class="form-group">
-          <input type="radio" name="tvWant" id="" value="0">
-          {!! Form::label('tvWant', 'เพียงพอ', array('class' => 'control-label')) !!}
+          {!! Form::text('tvnum',$dlit->tvnum,array('class' => 'form-control')) !!}
         </div>
         <div class="form-group">
           <input type="radio" name="tvWant" id="" value="1">
+          {!! Form::label('tvWant', 'เพียงพอ', array('class' => 'control-label')) !!}
+        </div>
+        <div class="form-group">
+          <input type="radio" name="tvWant" id="" value="2">
           {!! Form::label('tvWant', 'ไม่เพียงพอ', array('class' => 'control-label')) !!}
         </div>
 <!--
@@ -127,14 +127,14 @@
 -->
         <h5>2.5 กล้อง จำนวน(เครื่อง)</h5>
         <div class="form-group">
-          {!! Form::text('cameraNum',$dlit->cameraNum,array('class' => 'form-control')) !!}
-        </div>
-        <div class="form-group">
-          <input type="radio" name="cameraWant" id="" value="0">
-          {!! Form::label('cameraWant', 'เพียงพอ', array('class' => 'control-label')) !!}
+          {!! Form::text('cameranum',$dlit->cameranum,array('class' => 'form-control')) !!}
         </div>
         <div class="form-group">
           <input type="radio" name="cameraWant" id="" value="1">
+          {!! Form::label('cameraWant', 'เพียงพอ', array('class' => 'control-label')) !!}
+        </div>
+        <div class="form-group">
+          <input type="radio" name="cameraWant" id="" value="2">
           {!! Form::label('cameraWant', 'ไม่เพียงพอ', array('class' => 'control-label')) !!}
         </div>
 <!--
@@ -145,14 +145,14 @@
 -->
         <h5>2.6 LCD Tablet จำนวน(เครื่อง)</h5>
         <div class="form-group">
-          {!! Form::text('tabletNum',$dlit->tabletNum,array('class' => 'form-control')) !!}
-        </div>
-        <div class="form-group">
-          <input type="radio" name="tabletWant" id="" value="0">
-          {!! Form::label('tabletWant', 'เพียงพอ', array('class' => 'control-label')) !!}
+          {!! Form::text('tabletnum',$dlit->tabletnum,array('class' => 'form-control')) !!}
         </div>
         <div class="form-group">
           <input type="radio" name="tabletWant" id="" value="1">
+          {!! Form::label('tabletWant', 'เพียงพอ', array('class' => 'control-label')) !!}
+        </div>
+        <div class="form-group">
+          <input type="radio" name="tabletWant" id="" value="2">
           {!! Form::label('tabletWant', 'ไม่เพียงพอ', array('class' => 'control-label')) !!}
         </div>
 <!--
@@ -163,14 +163,14 @@
 -->
         <h5>2.7 Active Board จำนวน(เครื่อง)</h5>
         <div class="form-group">
-          {!! Form::text('abNum',$dlit->abNum,array('class' => 'form-control')) !!}
-        </div>
-        <div class="form-group">
-          <input type="radio" name="abWant" id="" value="0">
-          {!! Form::label('abWant', 'เพียงพอ', array('class' => 'control-label')) !!}
+          {!! Form::text('abnum',$dlit->abnum,array('class' => 'form-control')) !!}
         </div>
         <div class="form-group">
           <input type="radio" name="abWant" id="" value="1">
+          {!! Form::label('abWant', 'เพียงพอ', array('class' => 'control-label')) !!}
+        </div>
+        <div class="form-group">
+          <input type="radio" name="abWant" id="" value="2">
           {!! Form::label('abWant', 'ไม่เพียงพอ', array('class' => 'control-label')) !!}
         </div>
 <!--

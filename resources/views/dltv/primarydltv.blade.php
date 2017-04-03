@@ -33,10 +33,10 @@
     <td>ความเพียงพอ :</td>
     <td>
       @foreach($dltvSatelliteWant as $value)
-        @if($value -> dltvSatelliteWant == 0)
+        @if($value -> dltvSatelliteWant == 1)
           {{'เพียงพอ  จำนวน' }}
           {{$value -> count_dltvSatelliteWant}} โรงเรียน <br />
-        @elseif($value -> dltvSatelliteWant == 1)
+        @elseif($value -> dltvSatelliteWant == 2)
         {{'ไม่เพียงพอ  จำนวน' }}
         {{$value -> count_dltvSatelliteWant}} โรงเรียน
         @endif
@@ -55,12 +55,12 @@
     <td>ความเพียงพอ :</td>
     <td>
       @foreach($dltvLnbWant as $value)
-        @if($value -> dltvLnbWant == 0)
+        @if($value -> dltvLnbWant == 1)
           {{'เพียงพอ  จำนวน' }}
           {{$value -> count_dltvLnbWant}} โรงเรียน <br />
-        @elseif($value -> dltvLnbWant == 1)
-        {{'ไม่เพียงพอ  จำนวน' }}
-        {{$value -> count_dltvLnbWant}} โรงเรียน
+        @elseif($value -> dltvLnbWant ==2)
+          {{'ไม่เพียงพอ  จำนวน' }}
+          {{$value -> count_dltvLnbWant}} โรงเรียน
         @endif
       @endforeach
     </td>
@@ -77,10 +77,10 @@
     <td>ความเพียงพอ :</td>
     <td>
       @foreach($dltvReceiverWant as $value)
-        @if($value -> dltvReceiverWant == 0)
+        @if($value -> dltvReceiverWant == 1)
           {{'เพียงพอ  จำนวน' }}
           {{$value -> count_dltvReceiverWant}} โรงเรียน <br />
-        @elseif($value -> dltvReceiverWant == 1)
+        @elseif($value -> dltvReceiverWant == 2)
         {{'ไม่เพียงพอ  จำนวน' }}
         {{$value -> count_dltvReceiverWant}} โรงเรียน
         @endif
@@ -94,10 +94,10 @@
   <tr>
     <td>3. ข้อมูลเกี่ยวกับการรับสัญญาณดาวเทียม :</td>
     <td>@foreach($dltvProblem as $value)
-      @if($value -> dltvProblem == 0)
+      @if($value -> dltvProblem == 1)
         {{'มีปัญหา  จำนวน' }}
         {{$value -> count_dltvProblem}} โรงเรียน <br />
-      @elseif($value -> dltvProblem == 1)
+      @elseif($value -> dltvProblem == 2)
       {{'ไม่มีปัญหา  จำนวน' }}
       {{$value -> count_dltvProblem}} โรงเรียน
       @endif

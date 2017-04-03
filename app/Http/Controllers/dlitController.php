@@ -58,28 +58,51 @@ class dlitController extends Controller
         }
 
         $dlit->pcNum = $request->get('pcNum');
-        $dlit->pcWant = $request->get('pcWant');
+        if(!empty($request->get('pcWant'))){
+          $dlit->pcWant = $request->get('pcWant');
+        }
         $dlit->nbNum = $request->get('nbNum');
-        $dlit->nbWant = $request->get('nbWant');
+        if(!empty($request->get('nbWant'))){
+          $dlit->nbWant = $request->get('nbWant');
+        }
         $dlit->svNum = $request->get('svNum');
-        $dlit->svWant = $request->get('svWant');
-        $dlit->tvNum = $request->get('tvNum');
-        $dlit->tvWant = $request->get('tvWant');
-        $dlit->cameraNum = $request->get('cameraNum');
-        $dlit->cameraWant = $request->get('cameraWant');
-        $dlit->tabletNum = $request->get('tabletNum');
-        $dlit->tabletWant = $request->get('tabletWant');
-        $dlit->abNum = $request->get('abNum');
-        $dlit->abWant = $request->get('abWant');
+        if(!empty($request->get('svWant'))){
+          $dlit->svWant = $request->get('svWant');
+        }
+        $dlit->tvNum = $request->get('tvnum');
+        if(!empty($request->get('tvWant'))){
+          $dlit->tvWant = $request->get('tvWant');
+        }
+        $dlit->cameraNum = $request->get('cameranum');
+        if(!empty($request->get('cameraWant'))){
+          $dlit->cameraWant = $request->get('cameraWant');
+        }
+        $dlit->tabletNum = $request->get('tabletnum');
+        if(!empty($request->get('tabletWant'))){
+          $dlit->tabletWant = $request->get('tabletWant');
+        }
+        $dlit->abNum = $request->get('abnum');
+        if(!empty($request->get('abWant'))){
+          $dlit->abWant = $request->get('abWant');
+        }
+        if(!empty($request->get('dlitTechnical'))){
         $dlit->dlitTechnical = $request->get('dlitTechnical');
+        }
         $dlit->dlitTechnicalNum = $request->get('dlitTechnicalNum');
-        $dlit->dlitTeacher = $request->get('dlitTeacher');
+        if(!empty($request->get('dlitTeacher'))){
+          $dlit->dlitTeacher = $request->get('dlitTeacher');
+        }
         $dlit->dlitTeacherNum = $request->get('dlitTeacherNum');
-        $isp = implode(",", $request->get('isp'));
-        $dlit->isp = $isp ;
-        $dlit->ispDetail = $request->get('ispDetail');
-        $dlit->internet = $request->get('internet');
 
+        if(!empty($request->get('isp'))){
+          $isp = implode(",", $request->get('isp'));
+          $dlit->isp = $isp ;
+        }
+
+        $dlit->ispDetail = $request->get('ispDetail');
+        if(!empty($request->get('internet'))){
+          $dlit->internet = $request->get('internet');
+        }
         $myImg1 = '';
         $dest1 = 'upload/';
         $input1 = $request->file('dlitPicture1');
@@ -91,7 +114,9 @@ class dlitController extends Controller
             if($request->file('dlitPicture1')->move($dest1, $input1)){
               $myImg1 = $dest1.$input1;
               $dlit->dlitPicture1 = $myImg1;
-              $dlit->dlitPictureDetail1 = $request->get('dlitPictureDetail1');
+              if(!empty($request->get('dlitPictureDetail1'))){
+                $dlit->dlitPictureDetail1 = $request->get('dlitPictureDetail1');
+              }
             }
           }
         }
@@ -107,7 +132,9 @@ class dlitController extends Controller
             if($request->file('dlitPicture2')->move($dest2, $input2)){
               $myImg2 = $dest2.$input2;
               $dlit->dlitPicture2 = $myImg2;
-              $dlit->dlitPictureDetail2 = $request->get('dlitPictureDetail2');
+              if(!empty($request->get('dlitPictureDetail2'))){
+                $dlit->dlitPictureDetail2 = $request->get('dlitPictureDetail2');
+              }
             }
           }
         }
@@ -123,7 +150,9 @@ class dlitController extends Controller
             if($request->file('dlitPicture3')->move($dest3, $input3)){
               $myImg3 = $dest3.$input3;
               $dlit->dlitPicture3 = $myImg3;
-              $dlit->dlitPictureDetail3 = $request->get('dlitPictureDetail3');
+              if(!empty($request->get('dlitPictureDetail3'))){
+                $dlit->dlitPictureDetail3 = $request->get('dlitPictureDetail3');
+              }
             }
           }
         }
@@ -139,7 +168,9 @@ class dlitController extends Controller
             if($request->file('dlitPicture4')->move($dest4, $input4)){
               $myImg4 = $dest4.$input4;
               $dlit->dlitPicture4 = $myImg4;
-              $dlit->dlitPictureDetail4 = $request->get('dlitPictureDetail4');
+              if(!empty($request->get('dlitPictureDetail4'))){
+                $dlit->dlitPictureDetail4 = $request->get('dlitPictureDetail4');
+              }
             }
           }
         }
@@ -161,8 +192,56 @@ class dlitController extends Controller
 
       return View('dlit.form')
         ->with('dlit', $dlit);
-
   }
 
+  public function primarydlit(){
+    $user = Session::get('user');
+    if(empty($user)){
+      return View('site.loginForm');
+    }else{
+      $id = $user[0]->id ;
+      $dlitLevel = Dlits::where('head_school_id', '=', $id)
+        ->selectRaw('id,dlitLevel, count(*) as count_level')
+        ->groupBy('dlitLevel')
+        ->get();
+      $pcNum = Dlits::where('head_school_id', '=', $id)
+        ->sum('pcNum');
+      $pcWant = Dlits::where('head_school_id', '=', $id)
+        ->selectRaw('id,pcWant, count(*) as count_pcWant')
+        ->groupBy('pcWant')
+        ->get();
+      $nbNum = Dlits::where('head_school_id', '=', $id)
+        ->sum('nbNum');
+      $nbWant = Dlits::where('head_school_id', '=', $id)
+        ->selectRaw('id,nbWant, count(*) as count_nbWant')
+        ->groupBy('nbWant')
+        ->get();
+      $svNum = dlits::where('head_school_id', '=', $id)
+        ->sum('dlitReceiverNum');
+      $dlitReceiverWant = dlits::where('head_school_id', '=', $id)
+        ->selectRaw('id,dlitReceiverWant, count(*) as count_dlitReceiverWant')
+        ->groupBy('dlitReceiverWant')
+        ->get();
+      $dlitReceiverWantNum = dlits::where('head_school_id', '=', $id)
+        ->sum('dlitReceiverWantNum');
+      $dlitProblem = dlits::where('head_school_id', '=', $id)
+        ->selectRaw('id,dlitProblem, count(*) as count_dlitProblem')
+        ->groupBy('dlitProblem')
+        ->get();
+      return View('dlit.primarydlit')
+        ->with('dlitLevel', $dlitLevel)
+        ->with('dlitSatelliteNum', $dlitSatelliteNum)
+        ->with('dlitSatelliteWant', $dlitSatelliteWant)
+        ->with('dlitSatelliteWantNum', $dlitSatelliteWantNum)
+        ->with('dlitLnbNum', $dlitLnbNum)
+        ->with('dlitLnbWant', $dlitLnbWant)
+        ->with('dlitLnbWantNum', $dlitLnbWantNum)
+        ->with('dlitReceiverNum', $dlitReceiverNum)
+        ->with('dlitReceiverWant', $dlitReceiverWant)
+        ->with('dlitReceiverWantNum', $dlitReceiverWantNum)
+        ->with('dlitProblem', $dlitProblem)
+        ;
+    }
+  }
 
 }

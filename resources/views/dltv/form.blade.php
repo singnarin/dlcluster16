@@ -58,11 +58,11 @@
           {!! Form::text('dltvSatelliteNum',$dltv->dltvSatelliteNum,array('class' => 'form-control')) !!}
         </div>
         <div class="form-group">
-          <input type="radio" name="dltvSatelliteWant" id="" value="0">
+          <input type="radio" name="dltvSatelliteWant" id="" value="1">
           {!! Form::label('dltvSatelliteWant', 'เพียงพอ', array('class' => 'control-label')) !!}
         </div>
         <div class="form-group">
-          <input type="radio" name="dltvSatelliteWant" id="" value="1">
+          <input type="radio" name="dltvSatelliteWant" id="" value="2">
           {!! Form::label('dltvSatelliteWant', 'ไม่เพียงพอ', array('class' => 'control-label')) !!}
         </div>
 
@@ -76,11 +76,11 @@
           {!! Form::text('dltvLnbNum',$dltv->dltvLnbNum,array('class' => 'form-control')) !!}
         </div>
         <div class="form-group">
-          <input type="radio" name="dltvLnbWant" id="" value="0">
+          <input type="radio" name="dltvLnbWant" id="" value="1">
           {!! Form::label('dltvLnbWant', 'เพียงพอ', array('class' => 'control-label')) !!}
         </div>
         <div class="form-group">
-          <input type="radio" name="dltvLnbWant" id="" value="1">
+          <input type="radio" name="dltvLnbWant" id="" value="2">
           {!! Form::label('dltvLnbWant', 'ไม่เพียงพอ', array('class' => 'control-label')) !!}
         </div>
         <div class="form-group" id="place_select3">
@@ -92,11 +92,11 @@
           {!! Form::text('dltvReceiverNum',$dltv->dltvReceiverNum,array('class' => 'form-control')) !!}
         </div>
         <div class="form-group">
-          <input type="radio" name="dltvReceiverWant" id="dltvReceiverWant1" value="0">
+          <input type="radio" name="dltvReceiverWant" id="dltvReceiverWant1" value="1">
           {!! Form::label('dltvReceiverWant', 'เพียงพอ', array('class' => 'control-label')) !!}
         </div>
         <div class="form-group">
-          <input type="radio" name="dltvReceiverWant" id="dltvReceiverWant2" value="1">
+          <input type="radio" name="dltvReceiverWant" id="dltvReceiverWant2" value="2">
           {!! Form::label('dltvReceiverWant', 'ไม่เพียงพอ', array('class' => 'control-label')) !!}
         </div>
         <div class="form-group" id="place_select4">

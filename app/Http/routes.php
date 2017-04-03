@@ -67,7 +67,7 @@ Route::get('dlit', 'dlitController@index');
 Route::any('dlitForm/{id?}', 'dlitController@form');
 Route::get('primarydlit', 'dlitController@primarydlit');
 Route::get('schooldlit', 'dlitController@schooldlit');
-Route::any('primaryindex/{id?}', 'dlitController@primaryindex');
+Route::any('primarydlitindex/{id?}', 'dlitController@primaryindex');
 //cluster
 Route::get('clusterdlit', 'dlitController@clusterdlit');
 Route::get('clusterprimarydlit', 'dlitController@clusterprimarydlit');

@@ -58,15 +58,23 @@ class dltvController extends Controller
         }
 
         $dltv->dltvSatelliteNum = $request->get('dltvSatelliteNum');
-        $dltv->dltvSatelliteWant = $request->get('dltvSatelliteWant');
+        if(!empty($request->get('dltvSatelliteWant'))){
+          $dltv->dltvSatelliteWant = $request->get('dltvSatelliteWant');
+        }
         $dltv->dltvSatelliteWantNum = $request->get('dltvSatelliteWantNum');
         $dltv->dltvLnbNum = $request->get('dltvLnbNum');
-        $dltv->dltvLnbWant = $request->get('dltvLnbWant');
+        if(!empty($request->get('dltvLnbWant'))){
+          $dltv->dltvLnbWant = $request->get('dltvLnbWant');
+        }
         $dltv->dltvLnbWantNum = $request->get('dltvLnbWantNum');
         $dltv->dltvReceiverNum = $request->get('dltvReceiverNum');
-        $dltv->dltvReceiverWant = $request->get('dltvReceiverWant');
+        if(!empty($request->get('dltvReceiverWant'))){
+          $dltv->dltvReceiverWant = $request->get('dltvReceiverWant');
+        }
         $dltv->dltvReceiverWantNum = $request->get('dltvReceiverWantNum');
-        $dltv->dltvProblem = $request->get('dltvProblem');
+        if(!empty($request->get('dltvProblem'))){
+          $dltv->dltvProblem = $request->get('dltvProblem');
+        }
         $dltv->dltvProblemDetail = $request->get('dltvProblemDetail');
         $dltv->dltvProblemFix = $request->get('dltvProblemFix');
 
@@ -81,7 +89,9 @@ class dltvController extends Controller
             if($request->file('dltvPicture1')->move($dest1, $input1)){
               $myImg1 = $dest1.$input1;
               $dltv->dltvPicture1 = $myImg1;
-              $dltv->dltvPictureDetail1 = $request->get('dltvPictureDetail1');
+              if(!empty($request->get('dltvPictureDetail1'))){
+                $dltv->dltvPictureDetail1 = $request->get('dltvPictureDetail1');
+              }
             }
           }
         }
@@ -97,7 +107,9 @@ class dltvController extends Controller
             if($request->file('dltvPicture2')->move($dest2, $input2)){
               $myImg2 = $dest2.$input2;
               $dltv->dltvPicture2 = $myImg2;
-              $dltv->dltvPictureDetail2 = $request->get('dltvPictureDetail2');
+              if(!empty($request->get('dltvPictureDetail2'))){
+                $dltv->dltvPictureDetail2 = $request->get('dltvPictureDetail2');
+              }
             }
           }
         }
@@ -113,7 +125,9 @@ class dltvController extends Controller
             if($request->file('dltvPicture3')->move($dest3, $input3)){
               $myImg3 = $dest3.$input3;
               $dltv->dltvPicture3 = $myImg3;
-              $dltv->dltvPictureDetail3 = $request->get('dltvPictureDetail3');
+              if(!empty($request->get('dltvPictureDetail3'))){
+                $dltv->dltvPictureDetail3 = $request->get('dltvPictureDetail3');
+              }
             }
           }
         }
@@ -129,7 +143,9 @@ class dltvController extends Controller
             if($request->file('dltvPicture4')->move($dest4, $input4)){
               $myImg4 = $dest4.$input4;
               $dltv->dltvPicture4 = $myImg4;
-              $dltv->dltvPictureDetail4 = $request->get('dltvPictureDetail4');
+              if(!empty($request->get('dltvPictureDetail4'))){
+                $dltv->dltvPictureDetail4 = $request->get('dltvPictureDetail4');
+              }
             }
           }
         }

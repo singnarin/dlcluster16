@@ -27,9 +27,9 @@
   <tr>
     <td>ความเพียงพอ :</td>
     <td>
-      @if($school->dltvSatelliteWant == 0)
+      @if($school->dltvSatelliteWant == 1)
         {{'เพียงพอ'}}
-      @elseif($school->dltvSatelliteWant == 1)
+      @elseif($school->dltvSatelliteWant == 2)
         {{'ไม่เพียงพอ'}}
       @endif
     </td>
@@ -45,9 +45,9 @@
   <tr>
     <td>ความเพียงพอ :</td>
     <td>
-      @if($school->dltvLnbWant == 0)
+      @if($school->dltvLnbWant == 1)
         {{'เพียงพอ'}}
-      @elseif($school->dltvLnbWant == 1)
+      @elseif($school->dltvLnbWant == 2)
         {{'ไม่เพียงพอ'}}
       @endif
     </td>
@@ -63,9 +63,9 @@
   <tr>
     <td>ความเพียงพอ :</td>
     <td>
-      @if($school->dltvReceiverWant == 0)
+      @if($school->dltvReceiverWant == 1)
         {{'เพียงพอ'}}
-      @elseif($school->dltvReceiverWant == 1)
+      @elseif($school->dltvReceiverWant == 2)
         {{'ไม่เพียงพอ'}}
       @endif
     </td>
@@ -126,9 +126,6 @@
     <td>{{$school->telDirecter}}</td>
   </tr>
 </table>
-<div align="center">
-  {!! Html::link('../dltvForm/'.$school->id, 'แก้ไขข้อมูล', array('class'=>'btn btn-primary')) !!}
-</div>
 <br />
 <br />
 @stop
