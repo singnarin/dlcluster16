@@ -79,3 +79,15 @@ Route::post('schooldlitsearchp', 'dlitController@schooldlitsearchp');
 
 Route::get('electricity', 'electricityController@index');
 Route::any('electricityForm/{id?}', 'electricityController@form');
+
+Route::get('primaryelectricity', 'electricityController@primaryelectricity');
+Route::get('schoolelectricity', 'electricityController@schoolelectricity');
+Route::any('primaryelectricityindex/{id?}', 'electricityController@primaryindex');
+//cluster
+Route::get('clusterelectricity', 'electricityController@clusterelectricity');
+Route::get('clusterprimaryelectricity', 'electricityController@clusterprimaryelectricity');
+Route::get('clusterprimaryelectricitys/{id?}', 'electricityController@clusterprimaryelectricitys');
+Route::get('electricitysearch', 'electricityController@electricitysearch');
+Route::post('schoolelectricitysearch', 'electricityController@schoolelectricitysearch');
+Route::post('schoolelectricitysearchp', 'electricityController@schoolelectricitysearchp');
+//end

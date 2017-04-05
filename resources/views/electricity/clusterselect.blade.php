@@ -1,0 +1,29 @@
+@extends('layouts.master')
+@section('content')
+<center><h4>ข้อมูลเกี่ยวกับระบบไฟฟ้าโรงเรียนระดับเขตพื้นที่ </h4></center>
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+<table class="table table=bordered table-chicken">
+  <thead>
+    <tr>
+      <th>รหัส</th>
+      <th>ชื่อเขตพื้นที่การศึกษา</th>
+    </tr>
+    <tbody>
+      @foreach($school as $value)
+        <tr>
+          <td>
+            {!! Html::link('clusterprimaryelectricitys/'.$value->id, $value->id) !!}
+          </td>
+          <td>
+            {!! Html::link('clusterprimaryelectricitys/'.$value->id, $value->schoolName) !!}
+          </td>
+        </tr>
+      @endforeach
+    </tbody>
+  </thead>
+</table>
+<?php echo $school->render() ;?>
+</div>
+</div>
+@stop

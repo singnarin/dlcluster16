@@ -75,8 +75,8 @@
         <li class="dropdown">
           <a class="dropdown-toggle" data-toggle="dropdown" href="#"><span class="glyphicon glyphicon-warning-sign"> ข้อมูลไฟฟ้า</span></a>
             <ul class="dropdown-menu">
-              <li>{!! Html::link('primarydlit',' ข้อมูลไฟฟ้าระดับเขตพื้นที่') !!}</li>
-              <li>{!! Html::link('schooldlit', ' ขข้อมูลไฟฟ้าระดับโรงเรียน') !!}</li>
+              <li>{!! Html::link('primaryelectricity',' ข้อมูลไฟฟ้าระดับเขตพื้นที่') !!}</li>
+              <li>{!! Html::link('schoolelectricity', ' ขข้อมูลไฟฟ้าระดับโรงเรียน') !!}</li>
             </ul>
         </li>
       </li>
@@ -128,8 +128,26 @@
             </ul>
         </li>
       </li>
-      <li><a href="#"><span class="glyphicon glyphicon-cloud"></span> DLIT</a></li>
-      <li><a href="#"><span class="glyphicon glyphicon-warning-sign"></span> ข้อมูลไฟฟ้า</a></li>
+      <li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#"><span class="glyphicon glyphicon-cloud"> DLIT</span></a>
+            <ul class="dropdown-menu">
+              <li>{!! Html::link('clusterdlit',' ข้อมูล DLIT ระดับ Cluster') !!}</li>
+              <li>{!! Html::link('clusterprimarydlit',' ข้อมูล DLIT ระดับเขตพื้นที่') !!}</li>
+              <li>{!! Html::link('dlitsearch', ' ข้อมูล DLIT ระดับโรงเรียน') !!}</li>
+            </ul>
+        </li>
+      </li>
+      <li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#"><span class="glyphicon glyphicon-warning-sign"> ข้อมูลไฟฟ้า</span></a>
+            <ul class="dropdown-menu">
+              <li>{!! Html::link('clusterelectricity',' ข้อมูลไฟฟ้าระดับ Cluster') !!}</li>
+              <li>{!! Html::link('clusterprimaryelectricity',' ข้อมูลไฟฟ้าระดับเขตพื้นที่') !!}</li>
+              <li>{!! Html::link('electricitysearch', ' ข้อมูลไฟฟ้าระดับโรงเรียน') !!}</li>
+            </ul>
+        </li>
+      </li>
     </ul>
     @endif
     <ul class="nav navbar-nav navbar-right">
