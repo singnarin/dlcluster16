@@ -129,7 +129,7 @@
   </div>
 
   <div class="container-fluid">
-    <h4>ภาพกิจกรรม DLTV จำนวน 4 ภาพ</h4>
+    <h4>ภาพกิจกรรม DLTV จำนวน 4 ภาพ (ขนาดภาพความกว้างไม่เกิน 400 Pixel)</h4>
     <div class="col-xs-8 col-md-6">
       <div class="form-group">
         {!! Form::file('dltvPicture1',array('class' => 'form-control')) !!}
