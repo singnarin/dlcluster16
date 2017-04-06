@@ -29,8 +29,8 @@ Route::get('clusterteacher', 'TeacherController@clusterteacher');
 Route::get('clusterprimaryteacher', 'TeacherController@clusterprimaryteacher');
 Route::get('clusterprimaryteachers/{id?}', 'TeacherController@clusterprimaryteachers');
 Route::get('teachersearch', 'TeacherController@teachersearch');
-Route::post('schoolteachersearch', 'TeacherController@schoolteachersearch');
-Route::post('schoolteachersearchp', 'TeacherController@schoolteachersearchp');
+Route::any('schoolteachersearch', 'TeacherController@schoolteachersearch');
+Route::any('schoolteachersearchp', 'TeacherController@schoolteachersearchp');
 //end
 Route::get('schoolteacher', 'schoolTeacherController@index');
 Route::any('schoolteacherForm/{id?}', 'schoolTeacherController@form');
@@ -42,8 +42,8 @@ Route::get('clusterstudent', 'StudentController@clusterstudent');
 Route::get('clusterprimarystudent', 'StudentController@clusterprimarystudent');
 Route::get('clusterprimarystudents/{id?}', 'StudentController@clusterprimarystudents');
 Route::get('studentsearch', 'StudentController@studentsearch');
-Route::post('schoolstudentsearch', 'StudentController@schoolstudentsearch');
-Route::post('schoolstudentsearchp', 'StudentsController@schoolstudentsearchp');
+Route::any('schoolstudentsearch', 'StudentController@schoolstudentsearch');
+Route::any('schoolstudentsearchp', 'StudentController@schoolstudentsearchp');
 //end
 Route::get('schoolstudent', 'schoolStudentController@index');
 Route::any('schoolstudentForm/{id?}', 'schoolStudentController@form');
@@ -59,8 +59,8 @@ Route::get('clusterdltv', 'dltvController@clusterdltv');
 Route::get('clusterprimarydltv', 'dltvController@clusterprimarydltv');
 Route::get('clusterprimarydltvs/{id?}', 'dltvController@clusterprimarydltvs');
 Route::get('dltvsearch', 'dltvController@dltvsearch');
-Route::post('schooldltvsearch', 'dltvController@schooldltvsearch');
-Route::post('schooldltvsearchp', 'dltvController@schooldltvsearchp');
+Route::any('schooldltvsearch', 'dltvController@schooldltvsearch');
+Route::any('schooldltvsearchp/{id?}', 'dltvController@schooldltvsearchp');
 //end
 
 Route::get('dlit', 'dlitController@index');
@@ -73,8 +73,8 @@ Route::get('clusterdlit', 'dlitController@clusterdlit');
 Route::get('clusterprimarydlit', 'dlitController@clusterprimarydlit');
 Route::get('clusterprimarydlits/{id?}', 'dlitController@clusterprimarydlits');
 Route::get('dlitsearch', 'dlitController@dlitsearch');
-Route::post('schooldlitsearch', 'dlitController@schooldlitsearch');
-Route::post('schooldlitsearchp', 'dlitController@schooldlitsearchp');
+Route::any('schooldlitsearch', 'dlitController@schooldlitsearch');
+Route::any('schooldlitsearchp/{id?}', 'dlitController@schooldlitsearchp');
 //end
 
 Route::get('electricity', 'electricityController@index');
@@ -88,6 +88,7 @@ Route::get('clusterelectricity', 'electricityController@clusterelectricity');
 Route::get('clusterprimaryelectricity', 'electricityController@clusterprimaryelectricity');
 Route::get('clusterprimaryelectricitys/{id?}', 'electricityController@clusterprimaryelectricitys');
 Route::get('electricitysearch', 'electricityController@electricitysearch');
-Route::post('schoolelectricitysearch', 'electricityController@schoolelectricitysearch');
-Route::post('schoolelectricitysearchp', 'electricityController@schoolelectricitysearchp');
+Route::any('schoolelectricitysearch', 'electricityController@schoolelectricitysearch');
+Route::any('schoolelectricitysearchp', 'electricityController@schoolelectricitysearchp');
 //end
+Route::get('manual', 'download@getDownload');

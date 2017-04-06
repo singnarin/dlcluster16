@@ -18,6 +18,7 @@
       <li><a href="../dltv"><span class="glyphicon glyphicon-facetime-video"></span> DLTV</a></li>
       <li><a href="../dlit"><span class="glyphicon glyphicon-cloud"></span> DLIT</a></li>
       <li><a href="../electricity"><span class="glyphicon glyphicon-warning-sign"></span> ข้อมูลไฟฟ้า</a></li>
+      <li><a href="../manual"><span class="glyphicon glyphicon-book"></span> คู่มือ</a></li>
     </ul>
     @endif
     @if(!empty($user[0]->schoolName))
@@ -76,10 +77,11 @@
           <a class="dropdown-toggle" data-toggle="dropdown" href="#"><span class="glyphicon glyphicon-warning-sign"> ข้อมูลไฟฟ้า</span></a>
             <ul class="dropdown-menu">
               <li>{!! Html::link('primaryelectricity',' ข้อมูลไฟฟ้าระดับเขตพื้นที่') !!}</li>
-              <li>{!! Html::link('schoolelectricity', ' ขข้อมูลไฟฟ้าระดับโรงเรียน') !!}</li>
+              <li>{!! Html::link('schoolelectricity', ' ข้อมูลไฟฟ้าระดับโรงเรียน') !!}</li>
             </ul>
         </li>
       </li>
+      <li><a href="../manual"><span class="glyphicon glyphicon-book"></span> คู่มือ</a></li>
     </ul>
     @endif
     <ul class="nav navbar-nav navbar-right">
@@ -148,6 +150,7 @@
             </ul>
         </li>
       </li>
+      <li><a href="../manual"><span class="glyphicon glyphicon-book"></span> คู่มือ</a></li>
     </ul>
     @endif
     <ul class="nav navbar-nav navbar-right">

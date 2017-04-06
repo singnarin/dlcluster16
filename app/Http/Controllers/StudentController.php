@@ -244,7 +244,7 @@ class StudentController extends Controller
       }
     }
 
-    public function schoolteachersearch(Request $request, $id = null){
+    public function schoolstudentsearch(Request $request, $id = null){
       $user = Session::get('user');
       if(empty($user)){
         return View('site.loginForm');
@@ -283,7 +283,7 @@ class StudentController extends Controller
       }
     }
 
-    public function schoolteachersearchp(Request $request, $id = null){
+    public function schoolstudentsearchp(Request $request, $id = null){
       $user = Session::get('user');
       if(empty($user)){
         return View('site.loginForm');

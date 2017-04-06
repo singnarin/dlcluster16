@@ -3,20 +3,20 @@
 <center><h4>ข้อมูล DLIT</h4></center>
 <div align="center">
 <div class="form-group">
-  {!! Form::open(array('url' => 'schooldlitsearch', 'class' => 'form-inline')) !!}
+{!! Form::open(array('url' => 'schooldlitsearch', 'class' => 'form-inline')) !!}
     <div class="input-group">
       <div class="input-group-addon">ค้นหาตามรหัสโรงเรียน</div>
       {!! Form::text('id','',array('class' => 'form-control')) !!}
     </div>
     {!! Form::submit('ค้นหา', array('class'=>'btn btn-success')) !!}
-    {!! Form::close( ) !!}<br />
-    {!! Form::open(array('url' => 'schooldlitsearchp', 'class' => 'form-inline')) !!}
+{!! Form::close( ) !!}<br />
+{!! Form::open(array('url' => 'schooldlitsearchp', 'class' => 'form-inline')) !!}
     <div class="input-group">
       <div class="input-group-addon">ค้นหาตามเขตพื้นที่การศึกษา</div>
       {!! Form::select('id', \App\HeadSchool::where('id', '<>', '16000000')->where('id', '<>', '16161616')->pluck('name', 'id')->toArray(), array('class' => 'form-control')) !!}
     </div>
     {!! Form::submit('ค้นหา', array('class'=>'btn btn-success')) !!}
-    {!! Form::close( ) !!}
+{!! Form::close( ) !!}
   </div>
 </div>
 <div class="row">
@@ -60,7 +60,7 @@
     </tbody>
   </thead>
 </table>
-<?php echo $school->render() ;?>
+<?php echo $school->render(); ?>
 </div>
 </div>
 @stop

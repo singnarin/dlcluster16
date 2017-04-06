@@ -594,7 +594,7 @@ class dlitController extends Controller
             ->where('permission', '<>', '2')
             ->count();
           $school = Schools::where('head_school_id', '=', $id)
-            ->paginate(15);
+            ->paginate(300);
         }
         return View('dlit.clusterselectschool')
             ->with('school', $school)
